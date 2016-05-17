@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javastock.login.view.equipe.EquipeView;
+import javastock.principal.view.PrincipalView;
 
 /**
  * Classe que mapeia os elementos e funções da tela.
@@ -19,12 +20,13 @@ public class LoginControllerView {
     PasswordField senha;
 
 
-    public void logar() {
+    public void logar() throws Exception {
         System.out.println(" login:" + login.getText() + " senha:" + senha.getText());
+        new PrincipalView().start(new Stage());
     }
 
 
     public void equipe() throws Exception {
-    new EquipeView().start(new Stage());
+        new EquipeView().start(new Stage());
     }
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="319.0" prefWidth="218.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Accordion layoutX="1.0" layoutY="47.0">
+               <panes>
+                  <TitledPane animated="false" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #FFFFFF;" text="Geral">
+                     <content>
+                        <Pane prefWidth="190.0" style="-fx-background-color: #FFFFFF;">
+                           <children>
+                              <Button layoutX="-2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="VENDA" />
+                              <Button layoutX="-2.0" layoutY="41.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="CLIENTES" />
+                              <Button layoutX="-2.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="PRODUTOS" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane animated="false" prefHeight="242.0" prefWidth="216.0" style="-fx-background-color: white;" text="Administrativo">
+                     <content>
+                        <Pane style="-fx-background-color: white;">
+                           <children>
+                              <Button layoutX="-2.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="FUNCIONÁRIOS" />
+                              <Button layoutX="-2.0" layoutY="41.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="CONFIGURAÇÕES" />
+                              <Button layoutX="-2.0" layoutY="82.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="PRODUTOS" />
+                              <Button layoutX="-2.0" layoutY="122.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="RELATÓRIOS" />
+                           </children>
+                        </Pane>
+                     </content>
+                  </TitledPane>
+               </panes>
+            </Accordion>
+            <TextField layoutX="1.0" layoutY="2.0" prefHeight="48.0" prefWidth="217.0" promptText="BUSCA" style="-fx-background-color: #FFFFFF;" />
+         </children>
+         <effect>
+            <DropShadow radius="5.5525" width="3.21" />
+         </effect>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="898.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <ImageView fitHeight="39.0" fitWidth="116.0">
+               <image>
+                  <Image url="@img/logo2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="22.0" fitWidth="28.0" layoutX="1094.0" layoutY="9.0">
+               <image>
+                  <Image url="@img/account.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="323.0" layoutY="6.0">
+               <image>
+                  <Image url="@img/Carrinho.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="249.0" layoutY="7.0">
+               <image>
+                  <Image url="@img/icone-casa.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="1153.0" layoutY="4.0">
+               <image>
+                  <Image url="@img/Engrenagem.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D minX="25.0" minY="544.0" width="25.0" />
+               </viewport>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="559.0" prefWidth="682.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow color="#0000009d" height="23.85" radius="11.455" width="23.97" />
+         </effect>
+      </AnchorPane>
+   </center>
+   <stylesheets>
+      <URL value="@css/materialfx-toggleswitch.css" />
+      <URL value="@css/material-fx-v0_3.css" />
+   </stylesheets>
+</BorderPane>

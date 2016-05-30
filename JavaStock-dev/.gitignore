@@ -1,3 +1,5 @@
+*.db
+target/
 lib-cov
 *.seed
 *.log

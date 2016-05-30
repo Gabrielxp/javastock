@@ -1,4 +1,4 @@
-package javastock.login.view;
+package javastock.login.view.equipe;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-public class LoginView extends Application {
+public class EquipeView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -17,16 +18,16 @@ public class LoginView extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         root.setStyle(
-                String.format("-fx-background-image: url('javastock/login/view/img/LogoJavaStock.png'); -fx-background-size: cover;")
+                String.format("-fx-background-image: url('javastock/login/view/equipe/Javali.png'); -fx-background-size: cover;")
         );
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.getIcons().add(new Image("sacola.png"));
-        primaryStage.setTitle("JavaStock Comercial Plataform");
+
+        primaryStage.setTitle("Equipe JavaStock - UTFPR DV");
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.resizableProperty().setValue(false);
         primaryStage.show();
-        Image image = new Image("sacola.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setVisible(true);
+
 
 
 

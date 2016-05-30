@@ -90,7 +90,7 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="559.0" prefWidth="682.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+      <AnchorPane id="centerPane" fx:id="centerPane" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
          <effect>
             <DropShadow color="#0000009d" height="23.85" radius="11.455" width="23.97" />
          </effect>

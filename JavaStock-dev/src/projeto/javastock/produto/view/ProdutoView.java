@@ -14,13 +14,13 @@ public class ProdutoView extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("CadastroProdutos.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../../../../resource/fxml/CadastroProdutos.fxml"));
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.getIcons().add(new Image("sacola.png"));
+        primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial Plataform");
         primaryStage.show();
-        Image image = new Image("sacola.png");
+        Image image = new Image("img/sacola.png");
         ImageView imageView = new ImageView(image);
         imageView.setVisible(true);
 

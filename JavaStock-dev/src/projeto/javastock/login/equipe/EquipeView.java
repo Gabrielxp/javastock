@@ -1,11 +1,9 @@
-package javastock.login.view.equipe;
+package javastock.login.equipe;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,7 +14,7 @@ public class EquipeView extends Application {
 
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../../../resource/fxml/Equipe.fxml"));
         root.setStyle(
                 String.format("-fx-background-image: url('javastock/login/view/equipe/Javali.png'); -fx-background-size: cover;")
         );

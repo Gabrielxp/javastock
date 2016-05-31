@@ -1,13 +1,11 @@
-package javastock.login.view;
+package javastock.login;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javastock.login.view.equipe.EquipeView;
-import javastock.principal.view.PrincipalView;
+import javastock.login.equipe.EquipeView;
+import javastock.principal.PrincipalView;
 
 /**
  * Classe que mapeia os elementos e funções da tela.

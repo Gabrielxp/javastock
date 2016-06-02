@@ -21,6 +21,8 @@ public class LoginView extends Application {
         );
         stage = primaryStage;
         primaryStage.setScene(new Scene(root));
+        primaryStage.setFullScreen(true);
+
         primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial Plataform");
         primaryStage.show();

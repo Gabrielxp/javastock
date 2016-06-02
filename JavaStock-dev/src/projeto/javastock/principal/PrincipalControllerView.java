@@ -23,16 +23,30 @@ public class PrincipalControllerView implements Initializable {
     AnchorPane cadastroP;
 
     @FXML
+    AnchorPane listagemP;
+
+
+    @FXML
     public void abreTelaProdutos() throws Exception {
+        listagemP.setVisible(false);
+        listagemP.disableProperty().setValue(true);
         cadastroP.disableProperty().setValue(false);
         cadastroP.setVisible(true);
+
     }
 
+    public  void  listagemP(){
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(true);
+        listagemP.disableProperty().setValue(false);
+        listagemP.setVisible(true);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cadastroP.setVisible(false);
-        cadastroP.disableProperty().setValue(false);
-
+        cadastroP.disableProperty().setValue(true);
+        listagemP.setVisible(false);
+        listagemP.disableProperty().setValue(true);
     }
 }

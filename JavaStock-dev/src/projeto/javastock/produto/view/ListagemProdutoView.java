@@ -1,30 +1,31 @@
-package javastock.principal;
+package javastock.produto.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * Created by gabri on 16/05/2016.
+ * Created by gabri on 02/06/2016.
  */
-public class PrincipalView extends Application {
+public class ListagemProdutoView extends Application {
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ListagemProdutos.fxml"));
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/TelaPrincipalSoftware.fxml"));
-        root.setStyle(String.format("-fx-background-image: url(''); -fx-background-size: cover;"));
         primaryStage.setScene(new Scene(root));
-        primaryStage.setFullScreen(true);
-//        primaryStage.setAlwaysOnTop(true);
         primaryStage.getIcons().add(new Image("img/sacola.png"));
-        primaryStage.setTitle("JavaStock Comercial");
+        primaryStage.setTitle("JavaStock Comercial Plataform");
         primaryStage.show();
+        Image image = new Image("img/sacola.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setVisible(true);
 
     }
-
     public static void main(String[] args) {
         launch(args);
     }

@@ -8,7 +8,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class ProdutoView extends Application {
+/**
+ * View de CadastroProduto.
+ */
+public class CadastroProdutoView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {

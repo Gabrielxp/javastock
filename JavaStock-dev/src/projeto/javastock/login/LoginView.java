@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class LoginView extends Application {
+    public static Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -18,7 +19,7 @@ public class LoginView extends Application {
         root.setStyle(
                 String.format("-fx-background-image: url('img/LogoJavaStock.png'); -fx-background-size: cover;")
         );
-
+        stage = primaryStage;
         primaryStage.setScene(new Scene(root));
         primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial Plataform");
@@ -30,6 +31,9 @@ public class LoginView extends Application {
 
     }
 
+    public static void close() {
+        stage.close();
+    }
 
     public static void main(String[] args) {
         launch(args);

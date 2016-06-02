@@ -10,13 +10,12 @@ import javafx.stage.StageStyle;
 public class EquipeView extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
 
-
-        Parent root = FXMLLoader.load(getClass().getResource("../../../../../resource/fxml/Equipe.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Equipe.fxml"));
         root.setStyle(
-                String.format("-fx-background-image: url('javastock/login/view/equipe/Javali.png'); -fx-background-size: cover;")
+                String.format("-fx-background-image: url('img/Javali.png'); -fx-background-size: cover;")
         );
 
         primaryStage.setScene(new Scene(root));
@@ -25,8 +24,6 @@ public class EquipeView extends Application {
         primaryStage.initStyle(StageStyle.UTILITY);
         primaryStage.resizableProperty().setValue(false);
         primaryStage.show();
-
-
 
 
     }

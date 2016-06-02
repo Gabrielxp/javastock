@@ -1,29 +1,38 @@
 package javastock.principal;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javastock.produto.view.ProdutoControllerView;
+import javafx.scene.layout.StackPane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by gabri on 16/05/2016.
  */
-public class PrincipalControllerView {
+public class PrincipalControllerView implements Initializable {
 
     @FXML
-    AnchorPane anchorPane;
+    AnchorPane centerPane;
 
+    @FXML
+    StackPane stackpane;
+
+    @FXML
+    AnchorPane cadastroP;
+
+    @FXML
     public void abreTelaProdutos() throws Exception {
-        ProdutoControllerView produtoControllerView = new ProdutoControllerView();
-
-        setAnchorPane(produtoControllerView.getCadastroProdutoTela());
-
+        cadastroP.disableProperty().setValue(false);
+        cadastroP.setVisible(true);
     }
 
-    public AnchorPane getAnchorPane() {
-        return anchorPane;
-    }
 
-    public void setAnchorPane(AnchorPane anchorPane) {
-        this.anchorPane = anchorPane;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(false);
+
     }
 }

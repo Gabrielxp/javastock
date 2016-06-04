@@ -18,7 +18,6 @@ public class PrincipalView extends Application {
         root.setStyle(String.format("-fx-background-image: url(''); -fx-background-size: cover;"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
-//        primaryStage.setAlwaysOnTop(true);
         primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial");
         primaryStage.show();

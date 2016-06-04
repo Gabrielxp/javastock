@@ -26,10 +26,7 @@ public class ProdutoControllerView {
     private TextField precoEntrada;
     @FXML
     private TextArea descricaoProduto;
-
-    //Listagem produto.
-    @FXML
-    TreeView<String> listagemProdutos;
+;
 
     /**
      * Metodo para limpar campos de produtos que estão sendo cadastrados.
@@ -50,11 +47,6 @@ public class ProdutoControllerView {
         System.out.println(nomeProduto.getText());
     }
 
-    /**
-     * Método para listar produtos.
-     */
-    public void listarProdutos() {
-        listagemProdutos = new TreeView<>();
-    }
+
 
 }

@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * Created by gabri on 02/06/2016.
+ * View de listagem de produtos.
  */
 public class ListagemProdutoView extends Application {
 
@@ -26,6 +26,7 @@ public class ListagemProdutoView extends Application {
         imageView.setVisible(true);
 
     }
+
     public static void main(String[] args) {
         launch(args);
     }

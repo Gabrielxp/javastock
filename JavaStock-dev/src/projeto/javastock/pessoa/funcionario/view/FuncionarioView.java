@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * Created by gabri on 04/06/2016.
+ * View de Funcionário.
  */
 public class FuncionarioView extends Application {
     @Override

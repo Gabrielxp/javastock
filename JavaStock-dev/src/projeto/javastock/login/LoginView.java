@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * Classe View do Login.
+ */
 public class LoginView extends Application {
     public static Stage stage;
 

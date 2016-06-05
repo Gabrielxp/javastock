@@ -1,7 +1,7 @@
 package javastock.pessoa.funcionario.view;
 
 /**
- * Created by gabri on 04/06/2016.
+ * ControllerView do cadastro de Funcionário, mapeando os inputs.
  */
 public class CadastroFuncionarioControllerView {
     public void salvarFuncionario(){

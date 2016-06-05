@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Equipe View, com informações da equipe.
+ */
 public class EquipeView extends Application {
 
     @Override

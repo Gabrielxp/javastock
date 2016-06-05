@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 
 /**
  * Classe para apresentar a list de Produtos no formato tableView.
- * Created by gabri on 04/06/2016.
  */
 public class ProdutoProperty {
     private final StringProperty nomeProduto;

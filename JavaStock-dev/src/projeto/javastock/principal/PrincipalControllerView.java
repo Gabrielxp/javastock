@@ -9,22 +9,30 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by gabri on 16/05/2016.
+ * Controller mapeando os inputs da Classe {@link PrincipalView}.
  */
 public class PrincipalControllerView implements Initializable {
-
+    /**
+     * Tela central.
+     */
     @FXML
     AnchorPane centerPane;
 
     @FXML
     StackPane stackpane;
-
+    /**
+     * Tela Cadastro de Produtos.
+     */
     @FXML
     AnchorPane cadastroP;
-
+    /**
+     * Tela Listagem de Produtos.
+     */
     @FXML
     AnchorPane listagemP;
-
+    /**
+     * Tela cadastro de Funcionários.
+     */
     @FXML
     AnchorPane cadastroFunc;
 
@@ -67,7 +75,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroFunc.setVisible(false);
         cadastroFunc.disableProperty().setValue(true);
     }
-    public void sair(){
+
+    public void sair() {
         System.exit(0);
     }
 }

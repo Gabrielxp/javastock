@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gabri on 04/06/2016.
+ * ControllerView da {@link ListagemProdutoView}.
  */
 public class ListagemProdutoControllerView extends Application {
 
@@ -46,7 +46,7 @@ public class ListagemProdutoControllerView extends Application {
     public void listarProdutos() {
         List<Produto> produtos = ProdutoController.getInstancia().listar();
 
-        for (Produto produto: produtos) {
+        for (Produto produto : produtos) {
             String nome = produto.getNome();
             String qtd = Integer.toString(produto.getQuantidadeEstoque());
             String qtdMin = Integer.toString(produto.getQuantidadeMinima());

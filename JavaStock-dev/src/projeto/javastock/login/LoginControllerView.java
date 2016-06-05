@@ -11,7 +11,7 @@ import javastock.principal.PrincipalView;
 import javax.swing.*;
 
 /**
- * Classe que mapeia os elementos e funções da tela.
+ * Classe que mapeia os elementos e funções da tela  {@Link LoginView}.
  */
 public class LoginControllerView {
 
@@ -22,6 +22,7 @@ public class LoginControllerView {
 
     /**
      * Método para logar no sistema.
+     *
      * @throws Exception
      */
     public void logar() throws Exception {
@@ -32,6 +33,7 @@ public class LoginControllerView {
 
     /**
      * Método que abre tela da equipe.
+     *
      * @throws Exception
      */
     public void equipe() throws Exception {

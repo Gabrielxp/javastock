@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javastock.produto.Produto;
+import javastock.produto.ProdutoController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,24 +44,25 @@ public class ListagemProdutoControllerView extends Application {
      * Método para listar produtos.
      */
     public void listarProdutos() {
-        //trocar o object pelo model Produto!
-        List<Object> produtos = new ArrayList<>();//funcao buscaTodos do produto Controller.
+        List<Produto> produtos = ProdutoController.getInstancia().listar();
 
-        // for (Produto produto1 : produtos) {
-        //converter os parametos do model produto pra string e passar nesse Produto property e rodar essas coisas...
+        for (Produto produto: produtos) {
+            String nome = produto.getNome();
+            String qtd = Integer.toString(produto.getQuantidadeEstoque());
+            String qtdMin = Integer.toString(produto.getQuantidadeMinima());
+            String mrgLucro = Double.toString(produto.getMargemLucro());
+            String precoEntda = Double.toString(produto.getPrecoEntrada());
 
-        ProdutoProperty produto = new ProdutoProperty("Geladeira", "12", "10", "10.2", "12.2");
-        produtosData.add(produto);
-        nomeProduto.setCellValueFactory(produtosData -> produtosData.getValue().nomeProdutoProperty());
-        quantidade.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeProperty());
-        quantidadeMinima.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeMinimaProperty());
-        margemLucro.setCellValueFactory(produtosData -> produtosData.getValue().margemLucroProperty());
-        precoEntrada.setCellValueFactory(produtosData -> produtosData.getValue().precoEntradaProperty());
+            ProdutoProperty produtoProp = new ProdutoProperty(nome, qtd, qtdMin, mrgLucro, precoEntda);
+            produtosData.add(produtoProp);
+            nomeProduto.setCellValueFactory(produtosData -> produtosData.getValue().nomeProdutoProperty());
+            quantidade.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeProperty());
+            quantidadeMinima.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeMinimaProperty());
+            margemLucro.setCellValueFactory(produtosData -> produtosData.getValue().margemLucroProperty());
+            precoEntrada.setCellValueFactory(produtosData -> produtosData.getValue().precoEntradaProperty());
 
-        tabelaProdutos.setItems(produtosData);
-
-
-        //   }
+            tabelaProdutos.setItems(produtosData);
+        }
 
     }
 }

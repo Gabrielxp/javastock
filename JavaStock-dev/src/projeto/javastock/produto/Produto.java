@@ -19,11 +19,6 @@ public class Produto implements Entidade {
 
     /**
      * Cria um produto.
-     */
-    public Produto() { }
-
-    /**
-     * Cria um produto.
      * @param nome Nome do produto.
      * @param descricao Descricao do produto.
      * @param categoria Nome da categoria do produto.
@@ -32,9 +27,10 @@ public class Produto implements Entidade {
      * @param quantidadeEstoque Quantidade de produtos no estoque.
      * @param margemLucro Porcentagem de lucro na venda do produto (1 = 100%).
      * @param quantidadeMinima Quantidade mínima de produtos no estoque para alertar o gerente.
+     * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Produto(String nome, String descricao, String categoria, String fornecedor, float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima) {
-        this();
+    public Produto(String nome, String descricao, String categoria, String fornecedor, float precoEntrada,
+                   int quantidadeEstoque, double margemLucro, int quantidadeMinima) {
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setCategoria(categoria);
@@ -47,6 +43,7 @@ public class Produto implements Entidade {
 
     /**
      * Instancia produto com id. Utilizado apenas para instanciar entidade ja inseridas no banco.
+     * @param idProduto Id do produto.
      * @param nome Nome do produto
      * @param descricao Descricao do produto
      * @param categoria Nome da categoria do produto
@@ -55,13 +52,16 @@ public class Produto implements Entidade {
      * @param quantidadeEstoque Quantidade de produtos no estoque
      * @param margemLucro Porcentagem de lucro na venda do produto (1 = 100%)
      * @param quantidadeMinima Quantidade mínima de produtos no estoque para alertar o gerente
+     * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    Produto(int idProduto, String nome, String descricao, String categoria, String fornecedor, float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima) {
+    Produto(int idProduto, String nome, String descricao, String categoria, String fornecedor,
+            float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima) {
         this(nome, descricao, categoria, fornecedor, precoEntrada, quantidadeEstoque, margemLucro, quantidadeMinima);
         this.setId(idProduto);
     }
 
     /**
+     * Obtem o Identificador Unico do produto.
      * @return Identificador Unico do produto.
      */
     public int getIdProduto() {
@@ -69,7 +69,9 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem o nome do produto.
      * @return Nome do produto.
+     * @throws RuntimeException Caso o valor informado for menor que zero.
      */
     public String getNome() {
         return nome;
@@ -83,7 +85,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param nome Nome do produto.
+     * Altera o nome do produto.
+     * @param nome Novo nome.
+     * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
     public void setNome(String nome) {
         if (nome == null || nome.equals(""))
@@ -93,6 +97,7 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem a descricao do produto.
      * @return Descricao do produto.
      */
     public String getDescricao() {
@@ -100,7 +105,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param descricao Descricao do produto.
+     * Altera a descricao do produto.
+     * @param descricao Nova descricao.
+     * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
     public void setDescricao(String descricao) {
         if (nome == null || nome.equals(""))
@@ -111,6 +118,7 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem a categoria do produto.
      * @return Categoria do produto.
      */
     public String getCategoria() {
@@ -118,7 +126,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param categoria Categoria do produto.
+     * Altera o nome da categoria do produto.
+     * @param categoria Nova categoria.
+     * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
     public void setCategoria(String categoria) {
         if (nome == null || nome.equals(""))
@@ -128,6 +138,7 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem o fornecedor do produto.
      * @return Nome do fornecedor do produto.
      */
     public String getFornecedor() {
@@ -135,7 +146,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param fornecedor Nome do fornecedor do produto.
+     * Altera o nome do fornecedor produto.
+     * @param fornecedor Novo nome do fornecedor.
+     * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
     public void setFornecedor(String fornecedor) {
         if (nome == null || nome.equals(""))
@@ -145,6 +158,7 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem o preco de custo do produto.
      * @return Preco de custo do produto.
      */
     public float getPrecoEntrada() {
@@ -152,7 +166,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param precoEntrada Preco de custo do produto.
+     * Altera o preco de custo produto.
+     * @param precoEntrada Novo preco.
+     * @throws RuntimeException Caso o valor informado for menor que zero.
      */
     public void setPrecoEntrada(float precoEntrada) {
         if (precoEntrada < 0)
@@ -162,6 +178,7 @@ public class Produto implements Entidade {
     }
 
     /**
+     * Obtem o numero de produtos no estoque.
      * @return Quantidade de produtos no estoque.
      */
     public int getQuantidadeEstoque() {
@@ -169,7 +186,9 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @param quantidadeEstoque Quantidade de produtos no estoque.
+     * Altera a quantidade de produtos no estoque.
+     * @param quantidadeEstoque Nova quantidade.
+     * @throws RuntimeException Caso o valor informado for menor que zero.
      */
     public void setQuantidadeEstoque(int quantidadeEstoque) {
         if (quantidadeEstoque < 0)
@@ -179,14 +198,17 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @return Porcentagem de lucro na venda do produto (1 = 100%)
+     * Obtem a margem de lucro de venda por produto.
+     * @return Porcentagem de lucro na venda do produto (1 = 100%).
      */
     public double getMargemLucro() {
         return margemLucro;
     }
 
     /**
-     * @param margemLucro Porcentagem de lucro na venda do produto (1 = 100%)
+     * Altera a margem de lucro do produto.
+     * @param margemLucro Nova margem (1 = 100%).
+     * @throws RuntimeException Caso o valor informado for menor que zero.
      */
     public void setMargemLucro(double margemLucro) {
         if (margemLucro < 0)
@@ -197,19 +219,21 @@ public class Produto implements Entidade {
     }
 
     /**
-     * @return Quantidade mínima de produtos no estoque para alertar o gerente.
+     * Obtem a quantidade minima de produtos no estoque para alertar o gerente.
+     * @return Quantidade minima de produtos no estoque para alertar o gerente.
      */
     public int getQuantidadeMinima() {
         return quantidadeMinima;
     }
 
     /**
-     * @param quantidadeMinima Quantidade mínima de produtos no estoque para alertar o gerente.
+     * Altera a quantidade minima de produtos no estoque para alertar o gerente.
+     * @param quantidadeMinima Nova quantidade.
+     * @throws RuntimeException Caso o valor informado for menor que zero.
      */
     public void setQuantidadeMinima(int quantidadeMinima) {
         if (quantidadeMinima < 0)
             throw new RuntimeException("O valor deve ser maior que zero");
-
 
         this.quantidadeMinima = quantidadeMinima;
     }

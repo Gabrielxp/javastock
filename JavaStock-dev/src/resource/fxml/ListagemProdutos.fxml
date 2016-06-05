@@ -18,9 +18,9 @@
         <columns>
           <TableColumn id="nomeProduto" fx:id="nomeProduto" prefWidth="292.0" text="Nome Produto" />
           <TableColumn id="quantidade" fx:id="quantidade" minWidth="0.0" prefWidth="102.0" text="Quantidade" />
-            <TableColumn id="quantidadeMinima" fx:id="quantidadeMinima" minWidth="0.0" prefWidth="125.0" text="Quantidade Mínima" />
-            <TableColumn id="margemLucro" fx:id="margemLucro" minWidth="0.0" prefWidth="119.0" text="Margem Lucro" />
-            <TableColumn id="precoEntrada" fx:id="precoEntrada" minWidth="0.0" prefWidth="107.0" text="Preço Entrada" />
+            <TableColumn id="quantidadeMinima" fx:id="quantidadeMinima" minWidth="0.0" prefWidth="153.0" text="Quantidade Mínima" />
+            <TableColumn id="margemLucro" fx:id="margemLucro" minWidth="0.0" prefWidth="118.0" text="Margem Lucro" />
+            <TableColumn id="precoEntrada" fx:id="precoEntrada" minWidth="0.0" prefWidth="102.0" text="Preço Entrada" />
         </columns>
       </TableView>
     </children>

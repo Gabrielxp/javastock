@@ -1,26 +1,24 @@
 package javastock.produto.view;
 
 import javafx.beans.property.*;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 
 /**
- * Classe para apresentar a list de Produtos.
+ * Classe para apresentar a list de Produtos no formato tableView.
  * Created by gabri on 04/06/2016.
  */
 public class ProdutoProperty {
     private final StringProperty nomeProduto;
-    private final IntegerProperty quantidade;
-    private final IntegerProperty quantidadeMinima;
-    private final DoubleProperty margemLucro;
-    private final DoubleProperty precoEntrada;
+    private final StringProperty quantidade;
+    private final StringProperty quantidadeMinima;
+    private final StringProperty margemLucro;
+    private final StringProperty precoEntrada;
 
-    public ProdutoProperty(String nomeProduto, Integer quantidade, Integer quantidadeMinima, double margemLucro, double precoEntrada) {
+    public ProdutoProperty(String nomeProduto, String quantidade, String quantidadeMinima, String margemLucro, String precoEntrada) {
         this.nomeProduto = new SimpleStringProperty(nomeProduto);
-        this.quantidade = new SimpleIntegerProperty(quantidade);
-        this.quantidadeMinima = new SimpleIntegerProperty(quantidadeMinima);
-        this.margemLucro = new SimpleDoubleProperty(margemLucro);
-        this.precoEntrada = new SimpleDoubleProperty(precoEntrada);
+        this.quantidade = new SimpleStringProperty(quantidade);
+        this.quantidadeMinima = new SimpleStringProperty(quantidadeMinima);
+        this.margemLucro = new SimpleStringProperty(margemLucro);
+        this.precoEntrada = new SimpleStringProperty(precoEntrada);
     }
 
     public String getNomeProduto() {
@@ -35,51 +33,51 @@ public class ProdutoProperty {
         this.nomeProduto.set(nomeProduto);
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade.get();
     }
 
-    public IntegerProperty quantidadeProperty() {
+    public StringProperty quantidadeProperty() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade.set(quantidade);
     }
 
-    public int getQuantidadeMinima() {
+    public String getQuantidadeMinima() {
         return quantidadeMinima.get();
     }
 
-    public IntegerProperty quantidadeMinimaProperty() {
+    public StringProperty quantidadeMinimaProperty() {
         return quantidadeMinima;
     }
 
-    public void setQuantidadeMinima(int quantidadeMinima) {
+    public void setQuantidadeMinima(String quantidadeMinima) {
         this.quantidadeMinima.set(quantidadeMinima);
     }
 
-    public double getMargemLucro() {
+    public String getMargemLucro() {
         return margemLucro.get();
     }
 
-    public DoubleProperty margemLucroProperty() {
+    public StringProperty margemLucroProperty() {
         return margemLucro;
     }
 
-    public void setMargemLucro(double margemLucro) {
+    public void setMargemLucro(String margemLucro) {
         this.margemLucro.set(margemLucro);
     }
 
-    public double getPrecoEntrada() {
+    public String getPrecoEntrada() {
         return precoEntrada.get();
     }
 
-    public DoubleProperty precoEntradaProperty() {
+    public StringProperty precoEntradaProperty() {
         return precoEntrada;
     }
 
-    public void setPrecoEntrada(double precoEntrada) {
+    public void setPrecoEntrada(String precoEntrada) {
         this.precoEntrada.set(precoEntrada);
     }
 }

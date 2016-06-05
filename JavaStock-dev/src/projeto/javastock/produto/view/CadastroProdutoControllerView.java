@@ -1,19 +1,26 @@
 package javastock.produto.view;
 
+import javafx.application.Application;
+import javafx.beans.property.ListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxListCell;
+import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javastock.produto.ProdutoController;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Classe que mapeia os elementos e funções da tela.
  */
-public class CadastroProdutoControllerView {
+public class CadastroProdutoControllerView implements Initializable {
     //Cadastro Produto.
     @FXML
     private TextField nomeProduto;
@@ -26,8 +33,26 @@ public class CadastroProdutoControllerView {
     @FXML
     private TextField precoEntrada;
     @FXML
+    private TextField fornecedor;
+    @FXML
+    private ComboBox categoriaProduto;
+    @FXML
     private TextArea descricaoProduto;
-;
+
+    ObservableList<String> options =
+            FXCollections.observableArrayList(
+                    "Alimentício",
+                    "Higiene",
+                    "Limpeza",
+                    "Saúde",
+                    "Construção",
+                    "Frutas e Verduras",
+                    "Massas",
+                    "Pães",
+                    "Carnes",
+                    "Estética",
+                    "Bebidas"
+            );
 
     /**
      * Metodo para limpar campos de produtos que estão sendo cadastrados.
@@ -47,14 +72,20 @@ public class CadastroProdutoControllerView {
     public void salvarProduto() {
         String nome = nomeProduto.getText();
         String descricao = descricaoProduto.getText();
-        String categoria = categoriaProduto.getText();
-        String fornecedor = fornecedorProduto.getText();
-        float precoEntrada = Float.parseFloat(precoEntrada.getText());
+        String categoria = categoriaProduto.getValue().toString();
+        String fornecedorP = fornecedor.getText();
+        float precoEntradaP = Float.parseFloat(precoEntrada.getText());
         int quantidadeEstoque = Integer.parseInt(quantidadeProduto.getText());
-        double margemLucro = Double.parseDouble(margemLucro.getText());
+        double margemLucroP = Double.parseDouble(margemLucro.getText());
         int quantidadeMinima = Integer.parseInt(quantidadeMinimaProduto.getText());
 
-        ProdutoController.getInstancia().criar(nome, descricao, categoria, fornecedor,
-                precoEntrada, quantidadeEstoque, margemLucro, quantidadeMinima);
+        ProdutoController.getInstancia().criar(nome, descricao, categoria, fornecedorP,
+                precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima);
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        categoriaProduto.getItems().setAll(options);
     }
 }

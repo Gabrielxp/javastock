@@ -15,7 +15,7 @@ class LocalConfig implements Config {
     }
 
     public String getEnderecoBD() {
-        throw new RuntimeException("Trocar dados do banco e remover essa linha");
+        //throw new RuntimeException("Trocar dados do banco e remover essa linha");
         return "localhost:5432/teste";
     }
 

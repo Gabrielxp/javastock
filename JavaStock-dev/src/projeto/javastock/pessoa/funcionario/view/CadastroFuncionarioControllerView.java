@@ -38,7 +38,8 @@ public class CadastroFuncionarioControllerView implements Initializable {
     private TextField cargaHoraria;
     @FXML
     private TextField regimeTrabalho;
-
+    @FXML
+    private TextField telefone;
 
     public void salvarFuncionario() {
         //pegar combo selecionado
@@ -46,6 +47,7 @@ public class CadastroFuncionarioControllerView implements Initializable {
     }
 
     public void limparFuncionario() {
+        telefone.clear();
         nome.clear();
         rua.clear();
         numero.clear();

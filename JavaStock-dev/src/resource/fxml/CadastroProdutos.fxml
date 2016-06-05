@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#limparProduto" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.produto.view.ProdutoControllerView">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#limparProduto" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.produto.view.CadastroProdutoControllerView">
    <children>
       <Text fill="#575757" fontSmoothingType="LCD" layoutX="29.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Cadastro de Produtos" />
       <Line endX="100.0" fill="BLACK" layoutX="156.0" layoutY="74.0" startX="-100.0" strokeMiterLimit="21.0" strokeWidth="0.5" />

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Point3D?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,14 +36,14 @@
                     </items>
                 </MenuButton>
                 <Button layoutY="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="VENDA" textAlignment="CENTER" />
-                <MenuButton contentDisplay="RIGHT" disable="true" layoutX="-1.0" layoutY="171.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="            ADMINISTRATIVO" textAlignment="CENTER">
+                <MenuButton contentDisplay="RIGHT" layoutX="-1.0" layoutY="171.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="            ADMINISTRATIVO" textAlignment="CENTER">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="FUNCIONÁRIOS" />
-                        <MenuItem mnemonicParsing="false" text="CONFIGURAÇÕES" />
-                        <MenuItem mnemonicParsing="false" text="RELATÓRIOS" />
+                        <MenuItem mnemonicParsing="false" onAction="#cadastroFuncionarios" text="FUNCIONÁRIOS" />
+                        <MenuItem mnemonicParsing="false" text="CONFIGURAÇÕES" visible="false" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="RELATÓRIOS" visible="false" />
                     </items>
                 </MenuButton>
-                <MenuButton contentDisplay="RIGHT" layoutY="91.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
+                <MenuButton contentDisplay="RIGHT" disable="true" layoutY="91.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
                     <items>
                         <MenuItem mnemonicParsing="false" text="BUSCA" />
                         <MenuItem mnemonicParsing="false" text="CADASTRO" />
@@ -65,6 +67,9 @@
                     <image>
                         <Image url="@../img/account.png" />
                     </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </ImageView>
                 <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="323.0" layoutY="6.0">
                     <image>
@@ -76,13 +81,25 @@
                         <Image url="@../img/icone-casa.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="1153.0" layoutY="4.0">
+            <Region layoutX="1156.0" layoutY="7.0" onMousePressed="#sair" prefHeight="33.0" prefWidth="40.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Region>
+                <ImageView cache="true" cacheHint="ROTATE" fitHeight="22.0" fitWidth="28.0" focusTraversable="true" layoutX="1146.0" layoutY="1.0" onMousePressed="#sair" preserveRatio="true" translateX="10.0" translateY="10.0" translateZ="10.0">
                     <image>
-                        <Image url="@../img/Engrenagem.png" />
+                        <Image url="@../img/Sair.png" />
                     </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
                     <viewport>
                         <Rectangle2D minX="25.0" minY="544.0" width="25.0" />
                     </viewport>
+               <rotationAxis>
+                  <Point3D z="5.0" />
+               </rotationAxis>
+
                 </ImageView>
             </children>
             <cursor>
@@ -98,6 +115,7 @@
             <StackPane id="stackpane" fx:id="stackpane" layoutY="-7.0" prefHeight="661.0" prefWidth="1063.0" />
             <fx:include fx:id="cadastroP" source="CadastroProdutos.fxml" />
             <fx:include fx:id="listagemP" source="ListagemProdutos.fxml" />
+            <fx:include fx:id="cadastroFunc" source="CadastroFuncionarios.fxml" />
         </AnchorPane>
     </center>
     <stylesheets>

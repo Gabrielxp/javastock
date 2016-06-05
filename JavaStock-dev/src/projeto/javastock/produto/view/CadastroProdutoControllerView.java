@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Classe que mapeia os elementos e funções da tela.
  */
-public class ProdutoControllerView {
+public class CadastroProdutoControllerView {
     //Cadastro Produto.
     @FXML
     private TextField nomeProduto;

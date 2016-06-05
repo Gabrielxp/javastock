@@ -25,21 +25,37 @@ public class PrincipalControllerView implements Initializable {
     @FXML
     AnchorPane listagemP;
 
+    @FXML
+    AnchorPane cadastroFunc;
+
 
     @FXML
     public void abreTelaProdutos() throws Exception {
         listagemP.setVisible(false);
         listagemP.disableProperty().setValue(true);
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
         cadastroP.disableProperty().setValue(false);
         cadastroP.setVisible(true);
 
     }
 
-    public  void  listagemP(){
+    public void listagemP() {
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
         cadastroP.setVisible(false);
         cadastroP.disableProperty().setValue(true);
         listagemP.disableProperty().setValue(false);
         listagemP.setVisible(true);
+    }
+
+    public void cadastroFuncionarios() {
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(true);
+        listagemP.disableProperty().setValue(true);
+        listagemP.setVisible(false);
+        cadastroFunc.setVisible(true);
+        cadastroFunc.disableProperty().setValue(false);
     }
 
     @Override
@@ -48,5 +64,10 @@ public class PrincipalControllerView implements Initializable {
         cadastroP.disableProperty().setValue(true);
         listagemP.setVisible(false);
         listagemP.disableProperty().setValue(true);
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
+    }
+    public void sair(){
+        System.exit(0);
     }
 }

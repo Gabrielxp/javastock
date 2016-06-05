@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javastock.venda.view.VendaView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -74,6 +76,10 @@ public class PrincipalControllerView implements Initializable {
         listagemP.disableProperty().setValue(true);
         cadastroFunc.setVisible(false);
         cadastroFunc.disableProperty().setValue(true);
+    }
+
+    public void abrirTelaVenda() throws Exception {
+        new VendaView().start(new Stage());
     }
 
     public void sair() {

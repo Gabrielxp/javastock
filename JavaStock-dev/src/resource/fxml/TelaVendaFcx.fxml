@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="730.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button layoutX="1140.0" layoutY="138.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="60.0" text="OK" />
+      <Button layoutX="1083.0" layoutY="589.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="FECHAR VENDA" />
+      <TextField layoutX="718.0" layoutY="138.0" opacity="0.95" prefHeight="53.0" prefWidth="307.0" promptText="Código Produto" />
+      <TextField editable="false" layoutX="799.0" layoutY="588.0" opacity="0.95" prefHeight="60.0" prefWidth="281.0" />
+      <TableView layoutX="722.0" layoutY="211.0" opacity="0.95" prefHeight="364.0" prefWidth="481.0">
+        <columns>
+            <TableColumn prefWidth="109.66668701171875" text="Código Produto" />
+          <TableColumn prefWidth="168.0" text="Nome Produto" />
+          <TableColumn prefWidth="84.0" text="Quantidade" />
+            <TableColumn prefWidth="70.666748046875" text="Valor" />
+        </columns>
+      </TableView>
+      <TextField layoutX="1035.0" layoutY="138.0" opacity="0.95" prefHeight="53.0" prefWidth="99.0" promptText="Quantidade" />
+   </children>
+</AnchorPane>

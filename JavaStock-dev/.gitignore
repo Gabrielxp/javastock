@@ -1,3 +1,5 @@
+/src/projeto/javastock/misc/LocalConfig.java
+
 *.db
 target/
 lib-cov

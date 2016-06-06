@@ -53,7 +53,7 @@ public class ListagemProdutoControllerView extends Application {
             String mrgLucro = Double.toString(produto.getMargemLucro());
             String precoEntda = Double.toString(produto.getPrecoEntrada());
 
-            ProdutoProperty produtoProp = new ProdutoProperty(nome, qtd, qtdMin, mrgLucro, precoEntda);
+            ProdutoProperty produtoProp = new ProdutoProperty(null,nome, qtd, qtdMin, mrgLucro, precoEntda);
             produtosData.add(produtoProp);
             nomeProduto.setCellValueFactory(produtosData -> produtosData.getValue().nomeProdutoProperty());
             quantidade.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeProperty());

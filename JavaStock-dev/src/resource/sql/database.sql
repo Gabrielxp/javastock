@@ -1,5 +1,7 @@
 CREATE TABLE Pessoa (
- id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,
+ id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,]
+ rg VARCHAR(10) NOT NULL,
+ cpf VARCHAR(11) NOT NULL,
  nome VARCHAR(50) NOT NULL,
  rua VARCHAR(50) NOT NULL,
  numero INT NOT NULL,
@@ -18,15 +20,12 @@ CREATE TABLE Telefone (
 );
 
 CREATE TABLE Cliente (
- rg VARCHAR(10) NOT NULL,
  c_id_pessoa INT NOT NULL,
  CONSTRAINT pk_cliente PRIMARY KEY (c_id_pessoa),
  CONSTRAINT fk_cliente FOREIGN KEY (c_id_pessoa) REFERENCES Pessoa (id_pessoa)
 );
 
 CREATE TABLE Funcionario (
- cpf VARCHAR(11) NOT NULL,
- rg VARCHAR(10) NOT NULL,
  funcao INT NOT NULL,
  salario FLOAT NOT NULL,
  carga_horario NUMERIC NOT NULL,

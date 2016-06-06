@@ -13,7 +13,7 @@
    <children>
       <Text fill="#575757" fontSmoothingType="LCD" layoutX="47.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Cadastro de Funcionários" />
       <Line endX="100.0" fill="BLACK" layoutX="156.0" layoutY="74.0" startX="-100.0" strokeMiterLimit="21.0" strokeWidth="0.5" />
-      <TextField id="nome" fx:id="nome" layoutX="125.0" layoutY="136.0" prefHeight="47.0" prefWidth="532.0" promptText="Nome " />
+      <TextField id="nome" fx:id="nome" layoutX="125.0" layoutY="136.0" prefHeight="47.0" prefWidth="287.0" promptText="Nome " />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="170.0" layoutX="814.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
       <Button layoutX="814.0" layoutY="254.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="86.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Inserir " />
       <Button layoutX="905.0" layoutY="254.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Excluir" />
@@ -35,5 +35,6 @@
       <TextField id="cargaHoraria" fx:id="cargaHoraria" layoutX="122.0" layoutY="509.0" prefHeight="36.0" prefWidth="252.0" promptText="Carga Horária" />
       <TextField id="regimeTrabalho" fx:id="regimeTrabalho" layoutX="405.0" layoutY="509.0" prefHeight="36.0" prefWidth="252.0" promptText="Regime de Trabalho" />
       <TextField id="telefone" fx:id="telefone" layoutX="385.0" layoutY="199.0" prefHeight="40.0" prefWidth="165.0" promptText="Telefone" />
+      <TextField id="email" fx:id="email" layoutX="423.0" layoutY="136.0" prefHeight="47.0" prefWidth="235.0" promptText="Email" />
    </children>
 </AnchorPane>

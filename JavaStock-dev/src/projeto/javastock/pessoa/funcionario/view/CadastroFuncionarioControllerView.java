@@ -25,6 +25,8 @@ public class CadastroFuncionarioControllerView implements Initializable {
     @FXML
     private TextField uf;
     @FXML
+    private TextField email;
+    @FXML
     private TextField cidade;
     @FXML
     private TextField cpf;
@@ -60,6 +62,7 @@ public class CadastroFuncionarioControllerView implements Initializable {
         salario.clear();
         cargaHoraria.clear();
         regimeTrabalho.clear();
+        email.clear();
     }
 
     @Override

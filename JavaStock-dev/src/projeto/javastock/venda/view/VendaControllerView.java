@@ -3,6 +3,7 @@ package javastock.venda.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -10,15 +11,13 @@ import javastock.produto.Produto;
 import javastock.produto.view.ProdutoProperty;
 import javastock.venda.VendaController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 /**
  * ControllerView de vendas, mapeando os inputs.
  */
-public class VendaControllerView {
+public class VendaControllerView implements Initializable {
 
     @FXML
     private TextField total;
@@ -38,6 +37,8 @@ public class VendaControllerView {
     TableColumn<ProdutoProperty, String> valor;
 
     private ObservableList<ProdutoProperty> produtosData = FXCollections.observableArrayList();
+
+    private List<Produto> produtos;
 //    public void salvarVenda(){
 //
 //        // Map<IdProduto, quantidade>
@@ -52,11 +53,16 @@ public class VendaControllerView {
 //        VendaController.getInstancia().criar(carrinho, desconto, idVendedor);
 //
 //    }
+
+    /**
+     * Este metodo apenas busca os produtos e retorna para view.
+     */
     public void selecionaProduto() {
         //passar a busca aqui
         Produto produto = null;
         produto = new Produto("Geladeira", null, null, null, 10, 0, 0.2, 0);//apagar  isso
 
+        produtos.add(produto);
         if (produto != null) {
             if (!quantidadeProd.getText().isEmpty()) {
 
@@ -88,13 +94,26 @@ public class VendaControllerView {
             }
         }
     }
+
+    /**
+     * Neste metodo realmente é criado o venda, e salvo os produtos no venda_produtos.
+     */
     public void fecharVenda() {
-        //Converter Os property em produtos e salvar no banco.
-        List<Produto> produtoList = new ArrayList<>();
-        for (ProdutoProperty property : produtosData) {
+        int idvenda = 0;//1)CRIA VENDA E GUARDA NESSA VARIAVEL O ID DELA
 
 
+        //2)PERCORRE OS PRODUTOS SELECIONADOS E SALVA NO VENDA_PRODUTO
+        for (Produto produto : produtos) {
+            //3)SALVAR NO VENDA_PRODUTO
         }
+        //limpaTela
+        produtosData.clear();
+        total.clear();
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        produtos = new ArrayList<>();
     }
 }

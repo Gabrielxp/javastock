@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javastock.produto.Produto;
+import javastock.produto.ProdutoDAO;
 import javastock.produto.view.ProdutoProperty;
 import javastock.venda.VendaController;
 
@@ -24,7 +25,7 @@ public class VendaControllerView implements Initializable {
     @FXML
     private TextField codigoProd;
     @FXML
-    private TableView tabelaProdutos;
+    private TableView<ProdutoProperty> tabelaProdutos;
     @FXML
     TableColumn<ProdutoProperty, String> nomeProduto;
     @FXML
@@ -38,7 +39,10 @@ public class VendaControllerView implements Initializable {
 
     private ObservableList<ProdutoProperty> produtosData = FXCollections.observableArrayList();
 
-    private List<Produto> produtos;
+    private List<Produto> carrinho;
+
+    private List<Produto> produtos = ProdutoDAO.getInstancia().listar();
+
 //    public void salvarVenda(){
 //
 //        // Map<IdProduto, quantidade>
@@ -55,14 +59,15 @@ public class VendaControllerView implements Initializable {
 //    }
 
     /**
-     * Este metodo apenas busca os produtos e retorna para view.
+     * Este metodo apenas busca os carrinho e retorna para view.
      */
     public void selecionaProduto() {
-        //passar a busca aqui
         Produto produto = null;
-        produto = new Produto("Geladeira", null, null, null, 10, 0, 0.2, 0);//apagar  isso
-
-        produtos.add(produto);
+        float id = Float.parseFloat(codigoProd.getText());
+        for(Produto prod : this.produtos) {
+            if (prod.getIdProduto() == id)
+                produto = prod;
+        }
         if (produto != null) {
             if (!quantidadeProd.getText().isEmpty()) {
 
@@ -96,16 +101,15 @@ public class VendaControllerView implements Initializable {
     }
 
     /**
-     * Neste metodo realmente é criado o venda, e salvo os produtos no venda_produtos.
+     * Neste metodo realmente é criado o venda, e salvo os carrinho no venda_produtos.
      */
     public void fecharVenda() {
-        int idvenda = 0;//1)CRIA VENDA E GUARDA NESSA VARIAVEL O ID DELA
+        Map<Integer, Integer> compras = new HashMap<>();
+        for (ProdutoProperty produto : tabelaProdutos.getItems())
+            compras.put(Integer.parseInt(produto.getCodProd()), Integer.parseInt(produto.getQuantidade()));
 
+        VendaController.getInstancia().criar(compras, 0, 1);
 
-        //2)PERCORRE OS PRODUTOS SELECIONADOS E SALVA NO VENDA_PRODUTO
-        for (Produto produto : produtos) {
-            //3)SALVAR NO VENDA_PRODUTO
-        }
         //limpaTela
         produtosData.clear();
         total.clear();
@@ -114,6 +118,6 @@ public class VendaControllerView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        produtos = new ArrayList<>();
+        carrinho = new ArrayList<>();
     }
 }

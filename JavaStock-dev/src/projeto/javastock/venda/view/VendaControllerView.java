@@ -3,18 +3,20 @@ package javastock.venda.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javastock.produto.Produto;
 import javastock.produto.view.ProdutoProperty;
+import javastock.venda.VendaController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by gabri on 05/06/2016.
+ * ControllerView de vendas, mapeando os inputs.
  */
 public class VendaControllerView {
 
@@ -24,7 +26,6 @@ public class VendaControllerView {
     private TextField codigoProd;
     @FXML
     private TableView tabelaProdutos;
-
     @FXML
     TableColumn<ProdutoProperty, String> nomeProduto;
     @FXML
@@ -37,11 +38,23 @@ public class VendaControllerView {
     TableColumn<ProdutoProperty, String> valor;
 
     private ObservableList<ProdutoProperty> produtosData = FXCollections.observableArrayList();
-
-
+//    public void salvarVenda(){
+//
+//        // Map<IdProduto, quantidade>
+//        Map<Integer, Integer> carrinho = new HashMap<>();
+//        carrinho.put(1, 3);
+//        carrinho.put(2, 4);
+//
+//        double desconto = .2;
+//        int idVendedor = 1;
+//
+//        // Ter certeza que todos os IDs existam no banco.
+//        VendaController.getInstancia().criar(carrinho, desconto, idVendedor);
+//
+//    }
     public void selecionaProduto() {
         //passar a busca aqui
-        Produto produto = buscaProduto(codigoProd.getText());
+        Produto produto = null;
         produto = new Produto("Geladeira", null, null, null, 10, 0, 0.2, 0);//apagar  isso
 
         if (produto != null) {
@@ -75,7 +88,6 @@ public class VendaControllerView {
             }
         }
     }
-
     public void fecharVenda() {
         //Converter Os property em produtos e salvar no banco.
         List<Produto> produtoList = new ArrayList<>();
@@ -84,16 +96,5 @@ public class VendaControllerView {
 
         }
 
-    }
-
-    /**
-     * Buscar produto no banco.
-     *
-     * @return
-     */
-
-    public Produto buscaProduto(String codProduto) {
-
-        return null;
     }
 }

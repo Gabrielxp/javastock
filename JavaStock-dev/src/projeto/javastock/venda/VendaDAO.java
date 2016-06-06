@@ -1,16 +1,13 @@
 package javastock.venda;
 
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
 
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
+import javastock.produto.Produto;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * Classe Responsavel por fazer operacoes da entidade Venda no banco de dados.
@@ -33,37 +30,66 @@ public class VendaDAO implements DAO<Venda> {
         return new DatabaseFactory().getConnection();
     }
 
-    public void salvar(Venda venda) {
+    public int salvar(Venda venda) {
         try (Connection connection = this.getConnection()) {
             if (venda.getIdVenda() == -1)
-                this.criar(connection, venda);
+                return this.criar(connection, venda);
+            else
+                return this.atualizar(connection, venda);
         } catch (SQLException e) {
             System.out.println(e);
         }
+
+        return -1;
     }
-    private int idVenda = -1;
-    private Date data;
-    private int quantidade;
-    private Map<Produto, Integer> carrinho = new HashMap<Produto, Integer>();
-    private double desconto;
-    private double valorVenda;
-    private double orcamento;
 
+    private int criar(Connection connection, Venda venda) throws SQLException {
+        String sql = "INSERT INTO Venda (data, desconto, v_f_id_pessoa) VALUES (?, ?, ?)";
 
-    public void criar(Connection connection, Venda venda) throws SQLException {
-        String sql = "INSERT INTO Venda (data, quantidade, carrinho, desconto, valorVenda, orcamento)" +
-                "VALUES (?, ? , ? , ?, ?, ?)";
-
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setDate(1, venda.getData());
-        stmt.setInt(2, venda.setQuantidade());
-        stmt.set(3, venda);
-        stmt.setDouble(4, venda.setDesconto());
-        stmt.setDouble(5, venda.setValorVenda());
-        stmt.setDouble(6, venda.setOrcamento());
+        PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        stmt.setTimestamp(1, new java.sql.Timestamp(venda.getData().getTime()));
+        stmt.setDouble(2, venda.getDesconto());
+        stmt.setInt(3, venda.getIdVendedor());
 
         stmt.execute();
+        int id;
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next())
+            id = rs.getInt(1);
+        else
+            throw new RuntimeException("Erro ao obter id");
+
         stmt.close();
+
+        for (Map.Entry<Produto, Integer> item : venda.getCarrinho().entrySet())
+            this.salvarItem(connection, item.getKey(), item.getValue(), id);
+
+        return id;
+    }
+
+    private void salvarItem(Connection connection, Produto produto, int quantidade, int idVenda)
+            throws SQLException {
+        String sql = "INSERT INTO venda_produto (vp_id_venda, vp_id_produto, quantidade," +
+                "valor_unitario) VALUES (?, ?, ?, ?)";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, idVenda);
+        stmt.setInt(2, produto.getIdProduto());
+        stmt.setInt(3, quantidade);
+        stmt.setFloat(4, produto.getPrecoEntrada());
+        stmt.execute();
+        stmt.close();
+    }
+
+    private int atualizar(Connection connection, Venda venda) {
+        // @TODO Terceira entrega.
+        throw new NotImplementedException();
+    }
+
+    public List<Venda> listar() {
+        // @TODO Terceira entrega.
+        throw new NotImplementedException();
     }
 
 }

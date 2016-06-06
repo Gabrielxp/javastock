@@ -1,5 +1,6 @@
 package javastock.pessoa.funcionario;
 
+import javastock.misc.Endereco;
 import javastock.misc.Entidade;
 import javastock.pessoa.Pessoa;
 
@@ -17,12 +18,18 @@ public class Funcionario extends Pessoa implements Entidade {
      * Cria um novo funcionario.
      * @param nome Nome do funcionario.
      * @param cpf CPF do funcionario.
+     * @param rg Numero da carteira de identidade da pessoa.
      * @param email Email do funcionario.
+     * @param endereco Endereco da funcionario.
+     * @param salario Salario do funcionario.
+     * @param cargaHoraria Carga horaria do funcionario.
+     * @param funcao Funcao do funcionario.
+     * @param regimeDeTrabalho Regime de trabalho do funcionario.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Funcionario(String nome, String cpf, String email, float salario, float cargaHoraria,
-                       String funcao, String regimeDeTrabalho) {
-        super(nome, cpf, email);
+    public Funcionario(String nome, String cpf, String rg, String email, Endereco endereco,
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho) {
+        super(nome, cpf, rg, email, endereco);
         this.setSalario(salario);
         this.setCargaHoraria(cargaHoraria);
         this.setFuncao(funcao);
@@ -34,12 +41,18 @@ public class Funcionario extends Pessoa implements Entidade {
      * @param idFuncionario Id do funcionario.
      * @param nome Nome do funcionario.
      * @param cpf CPF do funcionario.
+     * @param rg Numero da carteira de identidade da pessoa.
      * @param email Email do funcionario.
+     * @param endereco Endereco da funcionario.
+     * @param salario Salario do funcionario.
+     * @param cargaHoraria Carga horaria do funcionario.
+     * @param funcao Funcao do funcionario.
+     * @param regimeDeTrabalho Regime de trabalho do funcionario.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Funcionario(int idFuncionario, String nome, String cpf, String email, float salario,
-                       float cargaHoraria, String funcao, String regimeDeTrabalho) {
-        this(nome, cpf, email, salario, cargaHoraria, funcao, regimeDeTrabalho);
+    public Funcionario(int idFuncionario, String nome, String cpf, String rg, String email, Endereco endereco,
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho) {
+        this(nome, cpf, rg, email, endereco, salario, cargaHoraria, funcao, regimeDeTrabalho);
         this.setIdPessoa(idFuncionario);
     }
 

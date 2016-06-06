@@ -1,5 +1,5 @@
 CREATE TABLE Pessoa (
- id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,]
+ id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,
  nome VARCHAR(50) NOT NULL,
  rua VARCHAR(50) NOT NULL,
  numero INT NOT NULL,
@@ -50,10 +50,9 @@ CREATE TABLE Produto (
 
 CREATE TABLE Venda (
  id_venda SERIAL CONSTRAINT pk_venda PRIMARY KEY,
- data DATE,
+ data TIMESTAMP WITHOUT TIME ZONE,
  desconto NUMERIC NOT NULL,
-  valor_venda FLOAT, 
- v_c_id_pessoa INT NOT NULL,
+ v_c_id_pessoa INT,
  v_f_id_pessoa INT NOT NULL,
  CONSTRAINT fk_cliente FOREIGN KEY (v_c_id_pessoa) REFERENCES Cliente (c_id_pessoa),
  CONSTRAINT fk_funcionario FOREIGN KEY (v_f_id_pessoa) REFERENCES Funcionario (f_id_pessoa)
@@ -66,7 +65,6 @@ CREATE TABLE venda_produto (
  vp_id_produto INT,
  quantidade INT,
  valor_unitario FLOAT,
- valor_total FLOAT,
  CONSTRAINT fk_venda FOREIGN KEY (vp_id_venda) REFERENCES Venda (id_venda),
  CONSTRAINT fk_produto FOREIGN KEY (vp_id_produto) REFERENCES Produto (id_produto)
 );

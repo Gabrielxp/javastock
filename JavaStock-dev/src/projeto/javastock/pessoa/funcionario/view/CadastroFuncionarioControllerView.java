@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javastock.pessoa.funcionario.FuncionarioController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,8 +45,10 @@ public class CadastroFuncionarioControllerView implements Initializable {
     private TextField telefone;
 
     public void salvarFuncionario() {
-        //pegar combo selecionado
-        funcao.getValue().toString();
+
+        FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
+                cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText());
+
     }
 
     public void limparFuncionario() {
@@ -68,5 +71,6 @@ public class CadastroFuncionarioControllerView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         funcao.getItems().setAll("Vendedor", "Gerente");
+
     }
 }

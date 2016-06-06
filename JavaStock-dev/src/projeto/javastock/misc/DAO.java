@@ -10,8 +10,9 @@ public interface DAO<T extends Entidade> {
      * Salva entidade no banco dados. Caso possua um ID, atualiza tupla,
      * caso contraria uma nova.
      * @param entidade Registro a ser salvo.
+     * @return Id da entidade salva.
      */
-    void salvar(T entidade);
+    int salvar(T entidade);
 
     /**
      * Recupera todos os registros da banco.

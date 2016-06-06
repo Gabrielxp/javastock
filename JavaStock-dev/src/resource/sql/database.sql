@@ -50,9 +50,9 @@ CREATE TABLE Produto (
 
 CREATE TABLE Venda (
  id_venda SERIAL CONSTRAINT pk_venda PRIMARY KEY,
- data DATE,
+ data TIMESTAMP WITHOUT TIME ZONE,
  desconto NUMERIC NOT NULL,
- v_c_id_pessoa INT NOT NULL,
+ v_c_id_pessoa INT,
  v_f_id_pessoa INT NOT NULL,
  CONSTRAINT fk_cliente FOREIGN KEY (v_c_id_pessoa) REFERENCES Cliente (c_id_pessoa),
  CONSTRAINT fk_funcionario FOREIGN KEY (v_f_id_pessoa) REFERENCES Funcionario (f_id_pessoa)

@@ -1,16 +1,12 @@
 package javastock.produto;
 
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
 
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * Classe Responsavel por fazer operacoes da entidade Produto no banco de dados.
@@ -33,15 +29,17 @@ public class ProdutoDAO implements DAO<Produto> {
         return new DatabaseFactory().getConnection();
     }
 
-    public void salvar(Produto produto) {
+    public int salvar(Produto produto) {
         try (Connection connection = this.getConnection()) {
             if (produto.getIdProduto() == -1)
-                this.criar(connection, produto);
+                return this.criar(connection, produto);
             else
-                this.atualizar(connection, produto);
+                return this.atualizar(connection, produto);
         } catch (SQLException e) {
             System.out.print(e);
         }
+
+        return -1;
     }
 
     public List<Produto> listar() {
@@ -78,12 +76,12 @@ public class ProdutoDAO implements DAO<Produto> {
         return produtos;
     }
 
-    private void criar(Connection connection, Produto produto) throws SQLException {
+    private int criar(Connection connection, Produto produto) throws SQLException {
         String sql = "INSERT INTO Produto (nome, descricao, categoria, fornecedor, " +
                 "preco_entrada, quantidade_estoque, margem_lucro, quantidade_minima)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
+        PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, produto.getNome());
         stmt.setString(2, produto.getDescricao());
         stmt.setString(3, produto.getCategoria());
@@ -94,10 +92,20 @@ public class ProdutoDAO implements DAO<Produto> {
         stmt.setInt(8, produto.getQuantidadeMinima());
 
         stmt.execute();
+        int id;
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next())
+            id = rs.getInt(1);
+        else
+            throw new RuntimeException("Erro ao obter id");
+
         stmt.close();
+
+        return id;
     }
 
-    private void atualizar(Connection connection, Produto produto) {
+    private int atualizar(Connection connection, Produto produto) {
         // @TODO Terceira entrega.
         throw new NotImplementedException();
     }

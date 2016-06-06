@@ -1,5 +1,6 @@
 package javastock.pessoa;
 
+import javastock.misc.Endereco;
 import javastock.misc.Entidade;
 
 /**
@@ -10,19 +11,25 @@ public abstract class Pessoa implements Entidade {
     private int idPessoa = -1;
     private String nome;
     private String cpf;
+    private String rg;
     private String email;
+    private Endereco endereco;
 
     /**
      * Cria uma nova pessoa.
      * @param nome Nome da pessoa.
      * @param cpf CPF da pessoa.
+     * @param rg Numero da carteira de identidade da pessoa.
      * @param email Email da pessoa.
+     * @param endereco Endereco da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Pessoa(String nome, String cpf, String email) {
+    public Pessoa(String nome, String cpf, String rg, String email, Endereco endereco) {
         this.setNome(nome);
         this.setCpf(cpf);
+        this.setRg(rg);
         this.setEmail(email);
+        this.setEndereco(endereco);
     }
 
     /**
@@ -30,11 +37,13 @@ public abstract class Pessoa implements Entidade {
      * @param idPessoa Id da pessoa.
      * @param nome Nome da pessoa.
      * @param cpf CPF da pessoa.
+     * @param rg Numero da carteira de identidade da pessoa.
      * @param email Email da pessoa.
+     * @param endereco Endereco da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    Pessoa(int idPessoa, String nome, String cpf, String email) {
-        this(nome, cpf, email);
+    Pessoa(int idPessoa, String nome, String cpf, String rg, String email, Endereco endereco) {
+        this(nome, cpf, rg, email, endereco);
         this.setIdPessoa(idPessoa);
     }
 
@@ -79,6 +88,26 @@ public abstract class Pessoa implements Entidade {
     }
 
     /**
+     * Obtem o numero da carteira de identidade da pessoa.
+     * @return RG da pessoa.
+     */
+    public String getRg() {
+        return rg;
+    }
+
+    /**
+     * Altera o RG da pessoa.
+     * @param rg Novo RG.
+     * @throws RuntimeException Caso o valor informado for vazio ou nulo.
+     */
+    public void setRg(String rg) {
+        if (rg == null || rg.equals(""))
+            throw new RuntimeException("Este campo é obrigatorio");
+
+        this.rg = rg;
+    }
+
+    /**
      * Obtem o CPF da pessoa.
      * @return CPF da pessoa
      */
@@ -116,5 +145,21 @@ public abstract class Pessoa implements Entidade {
             throw new RuntimeException("Este campo é obrigatorio");
 
         this.email = email;
+    }
+
+    /**
+     * Obtem o endereco da pessoa.
+     * @return Endereco da pessoa
+     */
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    /**
+     * Altera o endereco da pessoa.
+     * @param endereco Novo endereco.
+     */
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

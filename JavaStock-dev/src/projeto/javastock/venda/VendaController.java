@@ -1,8 +1,12 @@
 package javastock.venda;
 
 import javastock.misc.DAO;
+import javastock.produto.Produto;
+import javastock.produto.ProdutoDAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controller de vendas.
@@ -25,16 +29,28 @@ public class VendaController {
 
     /**
      * Cria nova venda e salva no banco de dados.
-     * @param data       Data da venda.
-     * @param quantidade Quantidade de produtos.
-     * @param carrinho   Carrinho com todos os produtos inclusos na venda e a quantidade de cada um.
+     * @param carrinho Map contendo o ID do produto no carrinho e sua quantidade.
      * @param desconto   Desconto da venda;
-     * @param valorVenda Valor da venda.
-     * @param orcamento  Valor orçamento.
+     * @param idVendedor  ID do funcionario que realizou a venda.
      */
+    public void criar(Map<Integer, Integer> carrinho, double desconto, int idVendedor) {
 
-    public void criar(Date data, int quantidade, Map carrinho, double desconto, double valorVenda, double orcamento) {
-        Venda venda = new Venda(data, quantidade, carrinho, desconto, valorVenda, orcamento);
+        List<Produto> produtos = ProdutoDAO.getInstancia().listar();
+
+        Map<Produto, Integer> nCarrinho = new HashMap<>();
+
+        // @TODO Otimizar isso.
+        for (Map.Entry<Integer, Integer> item : carrinho.entrySet()) {
+            int idProduto = item.getKey();
+            for (Produto produto : produtos) {
+                if (produto.getIdProduto() == idProduto) {
+                    int quantidade = item.getValue();
+                    nCarrinho.put(produto, quantidade);
+                }
+            }
+        }
+
+        Venda venda = new Venda(desconto, idVendedor, nCarrinho);
 
         this.vendaDAO.salvar(venda);
     }

@@ -1,5 +1,5 @@
 CREATE TABLE Pessoa (
- id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,]
+ id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,
  nome VARCHAR(50) NOT NULL,
  rua VARCHAR(50) NOT NULL,
  numero INT NOT NULL,

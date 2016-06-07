@@ -44,6 +44,7 @@ public class ListagemProdutoControllerView extends Application {
      * Método para listar produtos.
      */
     public void listarProdutos() {
+        produtosData.clear();
         List<Produto> produtos = ProdutoController.getInstancia().listar();
 
         for (Produto produto : produtos) {

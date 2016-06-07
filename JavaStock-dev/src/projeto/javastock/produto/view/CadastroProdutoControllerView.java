@@ -64,6 +64,7 @@ public class CadastroProdutoControllerView implements Initializable {
         margemLucro.clear();
         precoEntrada.clear();
         descricaoProduto.clear();
+        fornecedor.clear();
     }
 
     /**
@@ -81,6 +82,7 @@ public class CadastroProdutoControllerView implements Initializable {
 
         ProdutoController.getInstancia().criar(nome, descricao, categoria, fornecedorP,
                 precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima);
+        limparProduto();
     }
 
 

@@ -24,7 +24,7 @@ class LocalConfig implements Config {
     }
 
     public String getSenhaBD() {
-        return "gabriel020596";
+        return "jiofre";
     }
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.pessoa.funcionario.view.CadastroFuncionarioControllerView">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.pessoa.funcionario.view.CadastroFuncionarioControllerView">
    <children>
       <Text fill="#575757" fontSmoothingType="LCD" layoutX="47.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Cadastro de Funcionários" />
       <Line endX="100.0" fill="BLACK" layoutX="156.0" layoutY="74.0" startX="-100.0" strokeMiterLimit="21.0" strokeWidth="0.5" />
@@ -34,5 +34,6 @@
       <Button layoutX="905.0" layoutY="254.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Excluir" />
       <Text layoutX="880.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imagem" />
       <Text layoutX="874.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EM BREVE" />
+      <TextField id="senha" fx:id="senha" layoutX="830.0" layoutY="311.0" prefHeight="36.0" prefWidth="150.0" promptText="Senha" />
    </children>
 </AnchorPane>

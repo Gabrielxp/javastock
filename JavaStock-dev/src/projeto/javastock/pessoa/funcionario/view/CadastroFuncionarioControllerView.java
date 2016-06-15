@@ -16,6 +16,8 @@ public class CadastroFuncionarioControllerView implements Initializable {
     @FXML
     private TextField nome;
     @FXML
+    private TextField senha;
+    @FXML
     private TextField rua;
     @FXML
     private TextField numero;
@@ -45,13 +47,14 @@ public class CadastroFuncionarioControllerView implements Initializable {
     private TextField telefone;
 
     public void salvarFuncionario() {
-
+        senha.getText();
         FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
                 cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText());
         limparFuncionario();
     }
 
     public void limparFuncionario() {
+        senha.clear();
         telefone.clear();
         nome.clear();
         rua.clear();

@@ -47,6 +47,8 @@ public class PrincipalControllerView implements Initializable {
     @FXML
     Label nome;
 
+    public static Funcionario funcionarioLogado;
+
     @FXML
     public void abreTelaProdutos() throws Exception {
         listagemP.setVisible(false);
@@ -78,7 +80,7 @@ public class PrincipalControllerView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final Funcionario funcionarioLogado = PrincipalView.funcionarioLogado;
+        funcionarioLogado = PrincipalView.funcionarioLogado;
         if (!funcionarioLogado.getFuncao().equals(1)) {
             administrativo.disableProperty().setValue(false);
         }

@@ -1,21 +1,21 @@
 CREATE TABLE Pessoa (
  id_pessoa SERIAL CONSTRAINT pk_pessoa PRIMARY KEY,
- nome VARCHAR(50) NOT NULL,
- rua VARCHAR(50) NOT NULL,
+ nome VARCHAR(100) NOT NULL,
+ rua VARCHAR(100) NOT NULL,
  numero INT NOT NULL,
  bairro VARCHAR(30) NOT NULL,
  cidade VARCHAR(30) NOT NULL,
- uf VARCHAR(2) NOT NULL,
- cep VARCHAR(10) NOT NULL,
- email VARCHAR(50) NOT NULL,
- rg VARCHAR(10) NOT NULL,
- cpf VARCHAR(11) NOT NULL
+ uf VARCHAR(4) NOT NULL,
+ cep VARCHAR(15) NOT NULL,
+ email VARCHAR(60) NOT NULL,
+ rg VARCHAR(15) NOT NULL,
+ cpf VARCHAR(15) NOT NULL
 );
 
 
 CREATE TABLE Telefone (
  cod_telefone SERIAL CONSTRAINT pk_telefone PRIMARY KEY,
- telefone VARCHAR(12) NOT NULL,
+ telefone VARCHAR(15) NOT NULL,
  id_pessoa INT NOT NULL,
  CONSTRAINT fk_pessoa FOREIGN KEY (id_pessoa) REFERENCES Pessoa (id_pessoa)
 );
@@ -30,7 +30,9 @@ CREATE TABLE Funcionario (
  funcao INT NOT NULL,
  salario FLOAT NOT NULL,
  carga_horario NUMERIC NOT NULL,
- regime_trabalho VARCHAR(30) NOT NULL,
+ fg_ativo SMALLINT NOT NULL,
+ senha varchar(20) NOT NULL,
+ regime_trabalho VARCHAR(40) NOT NULL,
  f_id_pessoa INT NOT NULL,
  CONSTRAINT pk_funcionario PRIMARY KEY (f_id_pessoa),
  CONSTRAINT fk_funcionario FOREIGN KEY (f_id_pessoa) REFERENCES Pessoa (id_pessoa)
@@ -38,10 +40,10 @@ CREATE TABLE Funcionario (
 
 CREATE TABLE Produto (
  id_produto SERIAL CONSTRAINT pk_produto PRIMARY KEY,
- nome VARCHAR(50) NOT NULL,
- descricao VARCHAR(50) NOT NULL,
+ nome VARCHAR(100) NOT NULL,
+ descricao VARCHAR(200) NOT NULL,
  categoria VARCHAR(30) NOT NULL,
- fornecedor VARCHAR(50) NOT NULL,
+ fornecedor VARCHAR(100) NOT NULL,
  preco_entrada FLOAT NOT NULL,
  quantidade_estoque INT NOT NULL,
  margem_lucro NUMERIC NOT NULL,

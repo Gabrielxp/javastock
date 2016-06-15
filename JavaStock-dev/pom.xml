@@ -21,6 +21,43 @@
             <artifactId>postgresql</artifactId>
             <version>9.4.1208.jre7</version>
         </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-validation -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-validation</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-decoration -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-decoration</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-converters -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-converters</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-common -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-common</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-fields -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-fields</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/com.jidesoft/jidefx-comparators -->
+        <dependency>
+            <groupId>com.jidesoft</groupId>
+            <artifactId>jidefx-comparators</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

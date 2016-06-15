@@ -13,16 +13,19 @@ import javafx.stage.Stage;
  */
 public class LoginView extends Application {
     public static Stage stage;
+    public static String pessoa;
+    public static Parent rootParent;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        pessoa = "TESTE";
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/TelaLogin.fxml"));
         root.setStyle(
                 String.format("-fx-background-image: url('img/LogoJavaStock.png'); -fx-background-size: cover;")
         );
         stage = primaryStage;
+        rootParent = root;
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);
 
@@ -38,6 +41,10 @@ public class LoginView extends Application {
 
     public static void close() {
         stage.close();
+    }
+
+    public static String getPessoa() {
+        return pessoa;
     }
 
     public static void main(String[] args) {

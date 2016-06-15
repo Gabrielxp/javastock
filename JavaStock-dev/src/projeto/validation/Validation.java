@@ -30,13 +30,14 @@ public class Validation {
     
     // Expressões regulares, corrija ou adicione novas de acordo com sua necessidade
     public static String EMAIL = "[a-z]\\w+(|\\.|-|_)\\w+@\\w+\\.[a-z]+(|\\.[a-z]{2,3})";
-    public static String VARCHAR45 = ".{0,45}";
-    public static String OBRIGATORIO = ".{1,45}"; // Pelo menos 1 caracter, máximo 45 :D
+    public static String LOGIN = ".{0,5}";
+//    public static String VARCHAR45 = ".{0,45}";
+//    public static String OBRIGATORIO = ".{1,45}"; // Pelo menos 1 caracter, máximo 45 :D
     public static String TELEFONE = ".{13}";
-    public static String CPF = "[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}";
-    public static String CNPJ = "[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}";
+//    public static String CPF = "[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}";
+//    public static String CNPJ = "[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}";
     public static String INTEIRO = "[0-9]{1,9}";
-    public static String REAL = "[0-9]{1,6}(|((\\,|\\.)([0-9]{1,2})))";
+//    public static String REAL = "[0-9]{1,6}(|((\\,|\\.)([0-9]{1,2})))";
     
     
     /**

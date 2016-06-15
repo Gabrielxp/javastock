@@ -135,4 +135,7 @@ public class Funcionario extends Pessoa implements Entidade {
 
         this.regimeDeTrabalho = regimeDeTrabalho;
     }
+    public void setId(int id){
+        this.setIdPessoa(id);
+    }
 }

@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javastock.pessoa.funcionario.Funcionario;
 
 /**
  * Created by gabri on 16/05/2016.
  */
 public class PrincipalView extends Application {
+    public static Funcionario funcionarioLogado;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -24,7 +26,12 @@ public class PrincipalView extends Application {
 
     }
 
+    public PrincipalView(Funcionario funcionario) {
+        this.funcionarioLogado = funcionario;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
+
 }

@@ -2,9 +2,12 @@ package javastock.principal;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javastock.pessoa.funcionario.Funcionario;
 import javastock.venda.view.VendaView;
 
 import java.net.URL;
@@ -38,6 +41,11 @@ public class PrincipalControllerView implements Initializable {
     @FXML
     AnchorPane cadastroFunc;
 
+    @FXML
+    MenuButton administrativo;
+
+    @FXML
+    Label nome;
 
     @FXML
     public void abreTelaProdutos() throws Exception {
@@ -70,6 +78,14 @@ public class PrincipalControllerView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final Funcionario funcionarioLogado = PrincipalView.funcionarioLogado;
+        if (!funcionarioLogado.getFuncao().equals(1)) {
+            administrativo.disableProperty().setValue(false);
+        }
+
+        nome.setStyle("-fx-text-fill: white; fx-font-weight:bold");
+
+        nome.setText(funcionarioLogado.getNome());
         cadastroP.setVisible(false);
         cadastroP.disableProperty().setValue(true);
         listagemP.setVisible(false);

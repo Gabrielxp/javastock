@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javastock.principal.PrincipalControllerView;
+import javastock.principal.PrincipalView;
 import javastock.produto.Produto;
 import javastock.produto.ProdutoController;
 
@@ -22,6 +24,8 @@ public class ListagemProdutoControllerView extends Application {
     @FXML
     TableView<ProdutoProperty> tabelaProdutos;
     @FXML
+    TableColumn<ProdutoProperty, String> codigo;
+    @FXML
     TableColumn<ProdutoProperty, String> nomeProduto;
     @FXML
     TableColumn<ProdutoProperty, String> quantidade;
@@ -36,7 +40,7 @@ public class ListagemProdutoControllerView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        tabelaProdutos.setEditable(true);
 
     }
 
@@ -53,9 +57,10 @@ public class ListagemProdutoControllerView extends Application {
             String qtdMin = Integer.toString(produto.getQuantidadeMinima());
             String mrgLucro = Double.toString(produto.getMargemLucro());
             String precoEntda = Double.toString(produto.getPrecoEntrada());
-
-            ProdutoProperty produtoProp = new ProdutoProperty(null,nome, qtd, qtdMin, mrgLucro, precoEntda);
+            String codigoP = produto.getIdProduto() + "";
+            ProdutoProperty produtoProp = new ProdutoProperty(codigoP, nome, qtd, qtdMin, mrgLucro, precoEntda);
             produtosData.add(produtoProp);
+            codigo.setCellValueFactory(produtosData -> produtosData.getValue().codProdProperty());
             nomeProduto.setCellValueFactory(produtosData -> produtosData.getValue().nomeProdutoProperty());
             quantidade.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeProperty());
             quantidadeMinima.setCellValueFactory(produtosData -> produtosData.getValue().quantidadeMinimaProperty());
@@ -64,6 +69,21 @@ public class ListagemProdutoControllerView extends Application {
 
             tabelaProdutos.setItems(produtosData);
         }
+
+    }
+
+    public void editarProduto() throws Exception {
+        String codigoProduto;
+
+        ProdutoProperty produtoProperty = tabelaProdutos.getSelectionModel().getSelectedItem();
+        codigoProduto = produtoProperty.getCodProd();
+        Produto produto = ProdutoController.getInstancia().buscar(Integer.parseInt(codigoProduto));
+        System.out.println(produto.toString());
+
+        new CadastroProdutoView(produto).start(new Stage());
+
+//        new ListagemProdutoView().start(        PrincipalView.stage
+//        );
 
     }
 }

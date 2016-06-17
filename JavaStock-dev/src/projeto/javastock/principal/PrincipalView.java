@@ -13,6 +13,8 @@ import javastock.pessoa.funcionario.Funcionario;
  */
 public class PrincipalView extends Application {
     public static Funcionario funcionarioLogado;
+    public static Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -22,6 +24,7 @@ public class PrincipalView extends Application {
         primaryStage.setFullScreen(true);
         primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial");
+        stage = primaryStage;
         primaryStage.show();
 
     }

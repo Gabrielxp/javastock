@@ -11,6 +11,8 @@ import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javastock.principal.PrincipalView;
+import javastock.produto.Produto;
 import javastock.produto.ProdutoController;
 
 import java.net.URL;
@@ -38,6 +40,10 @@ public class CadastroProdutoControllerView implements Initializable {
     private ComboBox categoriaProduto;
     @FXML
     private TextArea descricaoProduto;
+    @FXML
+    private TextField idProd;
+
+    private int idProduto = -1;
 
     ObservableList<String> options =
             FXCollections.observableArrayList(
@@ -80,8 +86,16 @@ public class CadastroProdutoControllerView implements Initializable {
         double margemLucroP = Double.parseDouble(margemLucro.getText());
         int quantidadeMinima = Integer.parseInt(quantidadeMinimaProduto.getText());
 
-        ProdutoController.getInstancia().criar(nome, descricao, categoria, fornecedorP,
-                precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima);
+        if (idProduto == -1) {
+            ProdutoController.getInstancia().criar(nome, descricao, categoria, fornecedorP,
+                    precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima);
+        } else {
+
+            CadastroProdutoView.close();
+            PrincipalView.stage.setFullScreen(true);
+            //SALVAR ALTERACAOOO  PRODUTO AQUI
+        }
+
         limparProduto();
     }
 
@@ -89,5 +103,22 @@ public class CadastroProdutoControllerView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         categoriaProduto.getItems().setAll(options);
+        if (CadastroProdutoView.produtoParaEditar != null) {
+            carregaTelaEdicao(CadastroProdutoView.produtoParaEditar);
+
+        }
+    }
+
+    private void carregaTelaEdicao(Produto produto) {
+        idProduto = produto.getIdProduto();
+        nomeProduto.setText(produto.getNome());
+        quantidadeProduto.setText(produto.getQuantidadeEstoque() + "");
+        quantidadeMinimaProduto.setText(produto.getQuantidadeMinima() + "");
+        margemLucro.setText(produto.getMargemLucro() + "");
+        precoEntrada.setText(produto.getPrecoEntrada() + "");
+        fornecedor.setText(produto.getFornecedor());
+        categoriaProduto.setValue(produto.getCategoria());
+        descricaoProduto.setText(produto.getDescricao());
+        idProd.setText(produto.getIdProduto()+"");
     }
 }

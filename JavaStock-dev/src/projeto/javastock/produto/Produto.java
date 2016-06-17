@@ -252,4 +252,5 @@ public class Produto implements Entidade {
                 ", quantidadeMinima=" + quantidadeMinima +
                 '}';
     }
+
 }

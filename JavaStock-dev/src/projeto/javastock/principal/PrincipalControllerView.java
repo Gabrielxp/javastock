@@ -42,6 +42,9 @@ public class PrincipalControllerView implements Initializable {
     AnchorPane cadastroFunc;
 
     @FXML
+    AnchorPane edicaoFunc;
+
+    @FXML
     MenuButton administrativo;
 
     @FXML
@@ -57,6 +60,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroFunc.disableProperty().setValue(true);
         cadastroP.disableProperty().setValue(false);
         cadastroP.setVisible(true);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
 
     }
 
@@ -67,6 +72,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroP.disableProperty().setValue(true);
         listagemP.disableProperty().setValue(false);
         listagemP.setVisible(true);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
     }
 
     public void cadastroFuncionarios() {
@@ -76,6 +83,19 @@ public class PrincipalControllerView implements Initializable {
         listagemP.setVisible(false);
         cadastroFunc.setVisible(true);
         cadastroFunc.disableProperty().setValue(false);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
+    }
+
+    public void edicaoFuncionarios() {
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(true);
+        listagemP.disableProperty().setValue(true);
+        listagemP.setVisible(false);
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
+        edicaoFunc.setVisible(true);
+        edicaoFunc.disableProperty().setValue(false);
     }
 
     @Override
@@ -94,6 +114,8 @@ public class PrincipalControllerView implements Initializable {
         listagemP.disableProperty().setValue(true);
         cadastroFunc.setVisible(false);
         cadastroFunc.disableProperty().setValue(true);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
     }
 
     public void abrirTelaVenda() throws Exception {

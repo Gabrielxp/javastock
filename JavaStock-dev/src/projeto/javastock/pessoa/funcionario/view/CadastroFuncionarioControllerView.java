@@ -2,8 +2,11 @@ package javastock.pessoa.funcionario.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javastock.pessoa.funcionario.Funcionario;
 import javastock.pessoa.funcionario.FuncionarioController;
 
 import java.net.URL;
@@ -45,12 +48,22 @@ public class CadastroFuncionarioControllerView implements Initializable {
     private TextField regimeTrabalho;
     @FXML
     private TextField telefone;
+    @FXML
+    private CheckBox status;
+
+    private int idFuncionario = -1;
 
     public void salvarFuncionario() {
         senha.getText();
-        FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
-                cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText());
-        limparFuncionario();
+        if (idFuncionario == -1) {
+            FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
+                    cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText());
+            limparFuncionario();
+        } else {
+            //fazer update
+            limparFuncionario();
+        }
+
     }
 
     public void limparFuncionario() {
@@ -69,11 +82,32 @@ public class CadastroFuncionarioControllerView implements Initializable {
         cargaHoraria.clear();
         regimeTrabalho.clear();
         email.clear();
+        idFuncionario = -1;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         funcao.getItems().setAll("Vendedor", "Gerente");
 
+    }
+
+    public void buscarFunc() throws Exception {
+        Funcionario funcionario = null;
+
+        nome.setText(funcionario.getNome());
+        rua.setText(funcionario.getEndereco().getRua());
+        numero.setText(funcionario.getEndereco().getNumero() + "");
+        bairro.setText(funcionario.getEndereco().getBairro());
+        cep.setText(funcionario.getEndereco().getCep());
+        uf.setText(funcionario.getEndereco().getUf());
+        cidade.setText(funcionario.getEndereco().getCidade());
+        cpf.setText(funcionario.getCpf());
+        rg.setText(funcionario.getRg());
+        salario.setText(funcionario.getSalario() + "");
+        cargaHoraria.setText(funcionario.getCargaHoraria() + "");
+        regimeTrabalho.setText(funcionario.getRegimeDeTrabalho());
+        email.setText(funcionario.getEmail());
+
+        status.setSelected(true);
     }
 }

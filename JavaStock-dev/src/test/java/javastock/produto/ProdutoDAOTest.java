@@ -2,6 +2,7 @@ package javastock.produto;
 
 
 import junit.framework.TestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class ProdutoDAOTest extends TestCase {
 
     @Test
+    @Ignore
     public void testeSalvar() {
         Produto p1 = new Produto("Skol", "Cerveja", "Bebidas", "Matheus", (float) 3.00, 100, 2, 20);
         int salvar = ProdutoDAO.getInstancia().salvar(p1);
@@ -20,6 +22,7 @@ public class ProdutoDAOTest extends TestCase {
     }
 
     @Test
+    @Ignore
     public void testeListar() {
         List<Produto> lista = ProdutoDAO.getInstancia().listar();
         assertNotNull(lista);

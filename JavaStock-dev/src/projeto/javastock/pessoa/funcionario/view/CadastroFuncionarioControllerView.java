@@ -53,10 +53,10 @@ public class CadastroFuncionarioControllerView implements Initializable {
     private int idFuncionario = -1;
 
     public void salvarFuncionario() {
-        senha.getText();
+
         if (idFuncionario == -1) {
             FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
-                    cidade.getText(), uf.getText(), cep.getText(), 1, Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText(), senha.getText());
+                  cidade.getText(), uf.getText(), cep.getText(), 1, Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText(), senha.getText());
             limparFuncionario();
         } else {
             //fazer update

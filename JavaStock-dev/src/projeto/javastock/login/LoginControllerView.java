@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -70,10 +71,21 @@ public class LoginControllerView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        login.setTooltip(new Tooltip("Email"));
 
     }
 
     public void validaDigitacao() {
+        if (senha.getText().length() > 18) {
+            senha.setStyle("-fx-background-color: rgba(255, 41, 26, 0.41)");
+        } else {
+            senha.setStyle("-fx-background-color: transparent");
+        }
+        if (login.getText().length() > 58) {
+            login.setStyle("-fx-background-color: rgba(255, 41, 26, 0.41)");
+        } else {
+            login.setStyle("-fx-background-color: transparent");
 
+        }
     }
 }

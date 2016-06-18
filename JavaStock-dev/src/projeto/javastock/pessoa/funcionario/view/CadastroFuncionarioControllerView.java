@@ -57,7 +57,7 @@ public class CadastroFuncionarioControllerView implements Initializable {
         senha.getText();
         if (idFuncionario == -1) {
             FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
-                    cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText());
+                    cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText(),senha.getText(),1);
             limparFuncionario();
         } else {
             //fazer update

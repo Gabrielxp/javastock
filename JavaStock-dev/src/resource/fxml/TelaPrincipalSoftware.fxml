@@ -20,132 +20,117 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="javastock.principal.PrincipalControllerView">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.principal.PrincipalControllerView">
 
     <left>
-        <AnchorPane prefHeight="319.0" prefWidth="218.0"
-                    style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0;"
-                    BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="319.0" prefWidth="218.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 0;" BorderPane.alignment="CENTER">
             <children>
-                <Accordion layoutX="1.0" layoutY="400.0"/>
-                <Text layoutX="45.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu"
-                      wrappingWidth="62.52197265625">
+                <Accordion layoutX="1.0" layoutY="400.0" />
+                <Text layoutX="45.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="62.52197265625">
                     <font>
-                        <Font name="Comic Sans MS" size="16.0"/>
+                        <Font name="Comic Sans MS" size="16.0" />
                     </font>
                 </Text>
-                <MenuButton contentDisplay="RIGHT" layoutY="131.0" mnemonicParsing="false" popupSide="LEFT"
-                            prefHeight="40.0" prefWidth="218.0" text="                 PRODUTOS" textAlignment="CENTER">
+                <MenuButton contentDisplay="RIGHT" layoutY="131.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                 PRODUTOS" textAlignment="CENTER">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#listagemP" text="LISTAGEM"/>
-                        <MenuItem mnemonicParsing="false" onAction="#abreTelaProdutos" text="CADASTRO"/>
+                        <MenuItem mnemonicParsing="false" onAction="#listagemP" text="LISTAGEM" />
+                        <MenuItem mnemonicParsing="false" onAction="#abreTelaProdutos" text="CADASTRO" />
                     </items>
                 </MenuButton>
-                <Button layoutY="51.0" mnemonicParsing="false" onAction="#abrirTelaVenda" prefHeight="40.0"
-                        prefWidth="218.0" style="-fx-background-color: #FF;" text="VENDA" textAlignment="CENTER"/>
-                <MenuButton fx:id="administrativo" contentDisplay="RIGHT" layoutX="-1.0" layoutY="171.0"
-                            mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0"
-                            text="            ADMINISTRATIVO" textAlignment="CENTER">
+                <Button layoutY="51.0" mnemonicParsing="false" onAction="#abrirTelaVenda" prefHeight="40.0" prefWidth="218.0" style="-fx-background-color: #FF;" text="VENDA" textAlignment="CENTER" />
+                <MenuButton fx:id="administrativo" contentDisplay="RIGHT" layoutX="-1.0" layoutY="171.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="            ADMINISTRATIVO" textAlignment="CENTER">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#cadastroFuncionarios"
-                                  text="CADASTRO FUNCIONÁRIOS"/>
-                        <MenuItem mnemonicParsing="false" onAction="#edicaoFuncionarios" text="LISTAGEM FUNCIONÁRIOS"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" text="CONFIGURAÇÕES" visible="false"/>
-                        <MenuItem disable="true" mnemonicParsing="false" text="RELATÓRIOS" visible="false"/>
+                        <MenuItem mnemonicParsing="false" onAction="#cadastroFuncionarios" text="CADASTRO FUNCIONÁRIOS" />
+                        <MenuItem mnemonicParsing="false" onAction="#edicaoFuncionarios" text="EDIÇÃO FUNCIONÁRIOS" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="RELATÓRIOS" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="CONFIGURAÇÕES" />
                     </items>
                 </MenuButton>
-                <MenuButton contentDisplay="RIGHT" disable="true" layoutY="91.0" mnemonicParsing="false"
-                            popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
+                <MenuButton contentDisplay="RIGHT" disable="true" layoutY="91.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="BUSCA"/>
-                        <MenuItem mnemonicParsing="false" text="CADASTRO"/>
+                        <MenuItem mnemonicParsing="false" text="BUSCA" />
+                        <MenuItem mnemonicParsing="false" text="CADASTRO" />
                     </items>
                 </MenuButton>
             </children>
             <effect>
-                <DropShadow radius="5.5525" width="3.21"/>
+                <DropShadow radius="5.5525" width="3.21" />
             </effect>
         </AnchorPane>
     </left>
     <top>
-        <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="898.0"
-                    style="-fx-background-color: #000000;" BorderPane.alignment="CENTER_RIGHT">
+        <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="898.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER_RIGHT">
             <children>
                 <ImageView fitHeight="39.0" fitWidth="116.0">
                     <image>
-                        <Image url="@../img/logo2.png"/>
+                        <Image url="@../img/logo2.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="22.0" fitWidth="28.0" layoutX="1094.0" layoutY="9.0">
                     <image>
-                        <Image url="@../img/account.png"/>
+                        <Image url="@../img/account.png" />
                     </image>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="323.0" layoutY="6.0"
-                           onMousePressed="#abrirTelaVenda">
+                <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="323.0" layoutY="6.0" onMousePressed="#abrirTelaVenda">
                     <image>
-                        <Image url="@../img/Carrinho.png"/>
+                        <Image url="@../img/Carrinho.png" />
                     </image>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
                 <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="249.0" layoutY="7.0">
                     <image>
-                        <Image url="@../img/icone-casa.png"/>
+                        <Image url="@../img/icone-casa.png" />
                     </image>
                 </ImageView>
                 <Region layoutX="1156.0" layoutY="7.0" onMousePressed="#sair" prefHeight="33.0" prefWidth="40.0">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Region>
-                <ImageView cache="true" cacheHint="ROTATE" fitHeight="22.0" fitWidth="28.0" focusTraversable="true"
-                           layoutX="1146.0" layoutY="1.0" onMousePressed="#sair" preserveRatio="true" translateX="10.0"
-                           translateY="10.0" translateZ="10.0">
+                <ImageView cache="true" cacheHint="ROTATE" fitHeight="22.0" fitWidth="28.0" focusTraversable="true" layoutX="1146.0" layoutY="1.0" onMousePressed="#sair" preserveRatio="true" translateX="10.0" translateY="10.0" translateZ="10.0">
                     <image>
-                        <Image url="@../img/Sair.png"/>
+                        <Image url="@../img/Sair.png" />
                     </image>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                     <viewport>
-                        <Rectangle2D minX="25.0" minY="544.0" width="25.0"/>
+                        <Rectangle2D minX="25.0" minY="544.0" width="25.0" />
                     </viewport>
                     <rotationAxis>
-                        <Point3D z="5.0"/>
+                        <Point3D z="5.0" />
                     </rotationAxis>
 
                 </ImageView>
-                <Label fx:id="nome" layoutX="924.0" layoutY="12.0" text="Nome" textFill="WHITE"/>
+                <Label fx:id="nome" layoutX="924.0" layoutY="12.0" text="Nome" textFill="WHITE" />
             </children>
             <cursor>
-                <Cursor fx:constant="DEFAULT"/>
+                <Cursor fx:constant="DEFAULT" />
             </cursor>
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane id="centerPane" fx:id="centerPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0"
-                    prefWidth="1062.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+        <AnchorPane id="centerPane" fx:id="centerPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1062.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
             <effect>
-                <DropShadow color="#0000009d" height="23.85" radius="11.455" width="23.97"/>
+                <DropShadow color="#0000009d" height="23.85" radius="11.455" width="23.97" />
             </effect>
-            <StackPane id="stackpane" fx:id="stackpane" layoutY="-7.0" prefHeight="661.0" prefWidth="1063.0"/>
-            <fx:include fx:id="cadastroP" source="CadastroProdutos.fxml"/>
-            <fx:include fx:id="listagemP" source="ListagemProdutos.fxml"/>
-            <fx:include fx:id="cadastroFunc" source="CadastroFuncionarios.fxml"/>
-            <fx:include fx:id="edicaoFunc" source="EdicaoFuncionarios.fxml"/>
+            <StackPane id="stackpane" fx:id="stackpane" layoutY="-7.0" prefHeight="661.0" prefWidth="1063.0" />
+            <fx:include fx:id="cadastroP" source="CadastroProdutos.fxml" />
+            <fx:include fx:id="listagemP" source="ListagemProdutos.fxml" />
+            <fx:include fx:id="cadastroFunc" source="CadastroFuncionarios.fxml" />
+            <fx:include fx:id="edicaoFunc" source="EdicaoFuncionarios.fxml" />
 
         </AnchorPane>
     </center>
     <stylesheets>
-        <URL value="@/materialfx-toggleswitch.css"/>
-        <URL value="@/material-fx-v0_3.css"/>
+        <URL value="@/materialfx-toggleswitch.css" />
+        <URL value="@/material-fx-v0_3.css" />
     </stylesheets>
 </BorderPane>

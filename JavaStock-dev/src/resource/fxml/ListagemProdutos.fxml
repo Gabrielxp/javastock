@@ -24,5 +24,6 @@
             <TableColumn id="precoEntrada" fx:id="precoEntrada" minWidth="0.0" prefWidth="96.0" text="Preço Entrada" />
         </columns>
       </TableView>
+      <Text layoutX="41.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clique duas vezes em um produto para editar" />
     </children>
 </AnchorPane>

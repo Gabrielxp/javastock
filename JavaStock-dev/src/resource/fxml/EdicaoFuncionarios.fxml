@@ -28,6 +28,7 @@
       <TextField id="salario" fx:id="salario" layoutX="405.0" layoutY="487.0" prefHeight="36.0" prefWidth="252.0" promptText="Salário" />
       <TextField id="cargaHoraria" fx:id="cargaHoraria" layoutX="122.0" layoutY="552.0" prefHeight="36.0" prefWidth="252.0" promptText="Carga Horária" />
       <TextField id="regimeTrabalho" fx:id="regimeTrabalho" layoutX="405.0" layoutY="552.0" prefHeight="36.0" prefWidth="252.0" promptText="Regime de Trabalho" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ededed80" height="72.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1309.0" />
       <Button layoutX="814.0" layoutY="617.0" mnemonicParsing="false" onAction="#salvarFuncionario" prefHeight="47.0" prefWidth="142.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Salvar " />
       <Button layoutX="814.0" layoutY="564.0" mnemonicParsing="false" onAction="#limparFuncionario" prefHeight="47.0" prefWidth="142.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Limpar" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="170.0" layoutX="814.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
@@ -37,8 +38,8 @@
       <Text layoutX="874.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EM BREVE" />
       <TextField id="senha" fx:id="senha" layoutX="830.0" layoutY="354.0" prefHeight="36.0" prefWidth="150.0" promptText="Senha" />
       <TextField fx:id="idfunc" editable="false" layoutX="126.0" layoutY="127.0" prefHeight="40.0" prefWidth="94.0" promptText="ID" />
-      <Button layoutX="708.0" layoutY="10.0" mnemonicParsing="false" onAction="#buscarFunc" prefHeight="47.0" prefWidth="94.0" text="Buscar" />
-      <TextField fx:id="nomeFuncBusca" layoutX="272.0" layoutY="10.0" prefHeight="47.0" prefWidth="428.0" promptText="DIGITE O NOME DO FUNCIONÁRIO" />
+      <Button layoutX="696.0" layoutY="14.0" mnemonicParsing="false" onAction="#buscarFunc" prefHeight="47.0" prefWidth="94.0" text="Buscar" />
+      <TextField fx:id="nomeFuncBusca" layoutX="268.0" layoutY="14.0" prefHeight="47.0" prefWidth="428.0" promptText="DIGITE O NOME DO FUNCIONÁRIO" style="-fx-background-color: white;" />
       <CheckBox fx:id="status" layoutX="577.0" layoutY="96.0" mnemonicParsing="false" text="Status" />
    </children>
 </AnchorPane>

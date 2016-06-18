@@ -1,12 +1,12 @@
 package javastock.produto;
 
-import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
-
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe Responsavel por fazer operacoes da entidade Produto no banco de dados.
@@ -15,7 +15,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
     private static final ProdutoDAO instancia = new ProdutoDAO();
 
-    public ProdutoDAO() {}
+    private ProdutoDAO() {}
 
     /**
      * Singleton

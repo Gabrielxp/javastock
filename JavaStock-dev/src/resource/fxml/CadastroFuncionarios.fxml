@@ -8,25 +8,26 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.pessoa.funcionario.view.CadastroFuncionarioControllerView">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.pessoa.funcionario.view.CadastroFuncionarioControllerView">
    <children>
       <Text fill="#575757" fontSmoothingType="LCD" layoutX="47.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Cadastro de Funcionários" />
       <Line endX="100.0" fill="BLACK" layoutX="156.0" layoutY="74.0" startX="-100.0" strokeMiterLimit="21.0" strokeWidth="0.5" />
-      <TextField id="nome" fx:id="nome" layoutX="125.0" layoutY="136.0" prefHeight="47.0" prefWidth="287.0" promptText="Nome " />
-      <TextField id="email" fx:id="email" layoutX="423.0" layoutY="136.0" prefHeight="47.0" prefWidth="235.0" promptText="Email" />
-      <TextField id="rua" fx:id="rua" layoutX="124.0" layoutY="199.0" prefHeight="40.0" prefWidth="252.0" promptText="Rua" />
-      <TextField id="numero" fx:id="numero" layoutX="388.0" layoutY="197.0" prefHeight="40.0" prefWidth="94.0" promptText="Numero" />
-      <TextField id="telefone" fx:id="telefone" layoutX="494.0" layoutY="197.0" prefHeight="40.0" prefWidth="165.0" promptText="Telefone" />
-      <TextField id="bairro" fx:id="bairro" layoutX="126.0" layoutY="260.0" prefHeight="36.0" prefWidth="262.0" promptText="Bairro" />
-      <TextField id="cep" fx:id="cep" layoutX="405.0" layoutY="260.0" prefHeight="36.0" prefWidth="252.0" promptText="Cep" />
-      <TextField id="uf" fx:id="uf" layoutX="124.0" layoutY="320.0" prefHeight="36.0" prefWidth="174.0" promptText="UF" />
-      <TextField id="cidade" fx:id="cidade" layoutX="314.0" layoutY="320.0" prefHeight="36.0" prefWidth="344.0" promptText="Cidade" />
-      <TextField id="cpf" fx:id="cpf" layoutX="122.0" layoutY="383.0" prefHeight="36.0" prefWidth="252.0" promptText="CPF" />
-      <TextField id="rg" fx:id="rg" layoutX="405.0" layoutY="383.0" prefHeight="36.0" prefWidth="252.0" promptText="RG" />
-      <ComboBox id="funcao" fx:id="funcao" layoutX="122.0" layoutY="444.0" prefHeight="36.0" prefWidth="252.0" promptText="Função" />
-      <TextField id="salario" fx:id="salario" layoutX="405.0" layoutY="444.0" prefHeight="36.0" prefWidth="252.0" promptText="Salário" />
-      <TextField id="cargaHoraria" fx:id="cargaHoraria" layoutX="122.0" layoutY="509.0" prefHeight="36.0" prefWidth="252.0" promptText="Carga Horária" />
-      <TextField id="regimeTrabalho" fx:id="regimeTrabalho" layoutX="405.0" layoutY="509.0" prefHeight="36.0" prefWidth="252.0" promptText="Regime de Trabalho" />
+      <TextField id="nome" fx:id="nome" layoutX="125.0" layoutY="143.0" prefHeight="40.0" prefWidth="252.0" promptText="Nome " />
+      <TextField id="email" fx:id="email" layoutX="395.0" layoutY="143.0" prefHeight="40.0" prefWidth="262.0" promptText="Email" />
+      <TextField id="rua" fx:id="rua" layoutX="124.0" layoutY="199.0" prefHeight="40.0" prefWidth="344.0" promptText="Rua" />
+      <TextField id="numero" fx:id="numero" layoutX="492.0" layoutY="199.0" prefHeight="40.0" prefWidth="165.0" promptText="Numero" />
+      <TextField id="bairro" fx:id="bairro" layoutX="126.0" layoutY="256.0" prefHeight="40.0" prefWidth="262.0" promptText="Bairro" />
+      <TextField id="cep" fx:id="cep" layoutX="405.0" layoutY="256.0" prefHeight="40.0" prefWidth="252.0" promptText="Cep" />
+      <TextField id="uf" fx:id="uf" layoutX="124.0" layoutY="316.0" prefHeight="40.0" prefWidth="174.0" promptText="UF" />
+      <TextField id="cidade" fx:id="cidade" layoutX="314.0" layoutY="316.0" prefHeight="40.0" prefWidth="344.0" promptText="Cidade" />
+      <TextField id="cpf" fx:id="cpf" layoutX="122.0" layoutY="379.0" prefHeight="40.0" prefWidth="252.0" promptText="CPF" />
+      <TextField id="rg" fx:id="rg" layoutX="405.0" layoutY="379.0" prefHeight="40.0" prefWidth="252.0" promptText="RG" />
+      <ComboBox id="funcao" fx:id="funcao" layoutX="122.0" layoutY="440.0" prefHeight="40.0" prefWidth="252.0" promptText="Função" />
+      <TextField id="salario" fx:id="salario" layoutX="405.0" layoutY="440.0" prefHeight="40.0" prefWidth="252.0" promptText="Salário" />
+      <TextField id="cargaHoraria" fx:id="cargaHoraria" layoutX="122.0" layoutY="505.0" prefHeight="40.0" prefWidth="252.0" promptText="Carga Horária" />
+      <TextField id="regimeTrabalho" fx:id="regimeTrabalho" layoutX="405.0" layoutY="505.0" prefHeight="40.0" prefWidth="252.0" promptText="Regime de Trabalho" />
+      <TextField id="telefone" fx:id="telefone" layoutX="122.0" layoutY="568.0" prefHeight="40.0" prefWidth="252.0" promptText="Telefone" />
+      <TextField id="senha" fx:id="senha" layoutX="406.0" layoutY="568.0" prefHeight="40.0" prefWidth="252.0" promptText="Senha" />
       <Button layoutX="814.0" layoutY="574.0" mnemonicParsing="false" onAction="#salvarFuncionario" prefHeight="47.0" prefWidth="142.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Salvar " />
       <Button layoutX="814.0" layoutY="521.0" mnemonicParsing="false" onAction="#limparFuncionario" prefHeight="47.0" prefWidth="142.0" style="-fx-text-fill: white; -fx-background-color: black;" text="Limpar" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="170.0" layoutX="814.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
@@ -34,6 +35,5 @@
       <Button layoutX="905.0" layoutY="254.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: black; -fx-text-fill: white;" text="Excluir" />
       <Text layoutX="880.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Imagem" />
       <Text layoutX="874.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EM BREVE" />
-      <TextField id="senha" fx:id="senha" layoutX="830.0" layoutY="311.0" prefHeight="36.0" prefWidth="150.0" promptText="Senha" />
    </children>
 </AnchorPane>

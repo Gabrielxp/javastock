@@ -17,7 +17,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
 
     private static final FuncionarioDAO instancia = new FuncionarioDAO();
 
-    public FuncionarioDAO() {}
+    private FuncionarioDAO() {}
 
     /**
      * Singleton

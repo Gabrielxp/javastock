@@ -2,12 +2,11 @@ package javastock.pessoa.cliente.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToolBar;
-import javafx.scene.control.Tooltip;
-import javastock.misc.Endereco;
-import javastock.pessoa.cliente.Cliente;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javastock.botaoMensagens.BotaoView;
 import javastock.pessoa.cliente.ClienteController;
+import javastock.principal.PrincipalView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,20 +35,40 @@ public class CadastroClienteControllerView implements Initializable {
     private TextField cpf;
     @FXML
     private TextField rg;
+    @FXML
+    private TextField telefone;
 
-    public void salvarCliente() {
-        ClienteController.getInstancia().criar(nome.getText(),cpf.getText(),rg.getText(),email.getText(),rua.getText(),Integer.parseInt(numero.getText()),bairro.getText(),cidade.getText(),uf.getText(),cep.getText(),1);
+    @FXML
+    private Label labelSucesso;
+
+    public void salvarCliente() throws Exception {
+
+        if (ClienteController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(), cidade.getText(), uf.getText(), cep.getText(), 1) != -1) {
+
+            new BotaoView("Atenção!", "Cadastro Feito com Sucesso").start(new Stage());
+
+            limparCliente();
+        }
+
     }
 
     public void limparCliente() {
+        nome.clear();
+        rua.clear();
+        numero.clear();
+        bairro.clear();
+        cep.clear();
+        uf.clear();
+        cidade.clear();
+        cpf.clear();
+        rg.clear();
+        email.clear();
+        telefone.clear();
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ToolBar toolBar = new ToolBar();
-        Tooltip tooltip = new Tooltip("Apenas Numeros!");
-        toolBar.setTooltip(tooltip);
-        numero.setTooltip(toolBar.getTooltip());
+
     }
 }

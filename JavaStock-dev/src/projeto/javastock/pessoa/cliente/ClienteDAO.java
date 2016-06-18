@@ -25,6 +25,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     /**
      * Retorna instancia de clienteDAO.
+     *
      * @return
      */
     public static ClienteDAO getInstancia() {
@@ -33,16 +34,19 @@ public class ClienteDAO implements DAO<Cliente> {
 
     /**
      * Método para salvar Cliente.
+     *
      * @param cliente
      * @return
      */
     @Override
     public int salvar(Cliente cliente) {
         try (Connection connection = this.getConnection()) {
-            if (cliente.getIdPessoa() == -1)
+            if (cliente.getIdPessoa() == -1) {
+                System.out.println("entrou em criar");
                 return this.criar(connection, cliente);
-            else
+            } else {
                 return this.atualizar(connection, cliente);
+            }
         } catch (SQLException e) {
             System.out.print(e);
         }
@@ -57,6 +61,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     /**
      * Metodo para conectar na base de dados.
+     *
      * @return
      * @throws SQLException
      */
@@ -66,6 +71,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     /**
      * Criar cliente no banco.
+     *
      * @param connection
      * @param cliente
      * @return
@@ -88,6 +94,7 @@ public class ClienteDAO implements DAO<Cliente> {
 
     /**
      * Método para atualizar cliente.
+     *
      * @param connection
      * @param cliente
      * @return

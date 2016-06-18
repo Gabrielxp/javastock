@@ -48,10 +48,10 @@
                         <MenuItem mnemonicParsing="false" text="CONFIGURAÇÕES" />
                     </items>
                 </MenuButton>
-                <MenuButton contentDisplay="RIGHT" disable="true" layoutY="91.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
+                <MenuButton contentDisplay="RIGHT" layoutY="91.0" mnemonicParsing="false" popupSide="LEFT" prefHeight="40.0" prefWidth="218.0" text="                  CLIENTES">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="BUSCA" />
-                        <MenuItem mnemonicParsing="false" text="CADASTRO" />
+                        <MenuItem mnemonicParsing="false" text="LISTAGEM" />
+                        <MenuItem mnemonicParsing="false" onAction="#cadastroClientes" text="CADASTRO" />
                     </items>
                 </MenuButton>
             </children>
@@ -126,6 +126,8 @@
             <fx:include fx:id="listagemP" source="ListagemProdutos.fxml" />
             <fx:include fx:id="cadastroFunc" source="CadastroFuncionarios.fxml" />
             <fx:include fx:id="edicaoFunc" source="EdicaoFuncionarios.fxml" />
+            <fx:include fx:id="cadastroCli" source="CadastroClientes.fxml" />
+
 
         </AnchorPane>
     </center>

@@ -18,13 +18,13 @@ public class ClienteController {
         return instancia;
     }
 
-    public void criar(String nome, String cpf, String rg, String email, String rua,
+    public int criar(String nome, String cpf, String rg, String email, String rua,
                       int numero, String bairro, String cidade, String uf, String cep, int status) {
 
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
 
         Cliente cliente = new Cliente(nome, cpf, rg, email, endereco, status);
 
-        this.clienteDAO.salvar(cliente);
+        return this.clienteDAO.salvar(cliente);
     }
 }

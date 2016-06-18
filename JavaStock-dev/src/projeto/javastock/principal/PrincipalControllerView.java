@@ -48,6 +48,9 @@ public class PrincipalControllerView implements Initializable {
     MenuButton administrativo;
 
     @FXML
+    AnchorPane cadastroCli;
+
+    @FXML
     Label nome;
 
     public static Funcionario funcionarioLogado;
@@ -62,7 +65,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroP.setVisible(true);
         edicaoFunc.setVisible(false);
         edicaoFunc.disableProperty().setValue(true);
-
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
     }
 
     public void listagemP() {
@@ -74,6 +78,8 @@ public class PrincipalControllerView implements Initializable {
         listagemP.setVisible(true);
         edicaoFunc.setVisible(false);
         edicaoFunc.disableProperty().setValue(true);
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
     }
 
     public void cadastroFuncionarios() {
@@ -85,6 +91,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroFunc.disableProperty().setValue(false);
         edicaoFunc.setVisible(false);
         edicaoFunc.disableProperty().setValue(true);
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
     }
 
     public void edicaoFuncionarios() {
@@ -116,6 +124,12 @@ public class PrincipalControllerView implements Initializable {
         cadastroFunc.disableProperty().setValue(true);
         edicaoFunc.setVisible(false);
         edicaoFunc.disableProperty().setValue(true);
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
+    }
+    public void cadastroClientes(){
+        cadastroCli.setVisible(true);
+        cadastroCli.disableProperty().setValue(false);
     }
 
     public void abrirTelaVenda() throws Exception {

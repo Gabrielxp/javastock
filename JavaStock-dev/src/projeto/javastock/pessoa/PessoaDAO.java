@@ -14,10 +14,12 @@ public class PessoaDAO implements DAO<Pessoa> {
 
     private static final PessoaDAO instancia = new PessoaDAO();
 
-    private PessoaDAO() {}
+    private PessoaDAO() {
+    }
 
     /**
      * Singleton
+     *
      * @return Instancia de PessoaDAO.
      */
     public static PessoaDAO getInstancia() {
@@ -48,7 +50,7 @@ public class PessoaDAO implements DAO<Pessoa> {
 
     private int criar(Connection connection, Pessoa pessoa) throws SQLException {
         String sql = "INSERT INTO Pessoa (nome, email, rg, cpf, rua, numero, bairro, " +
-                "cidade, uf, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "cidade, uf, cep, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, pessoa.getNome());
@@ -61,6 +63,7 @@ public class PessoaDAO implements DAO<Pessoa> {
         stmt.setString(8, pessoa.getEndereco().getCidade());
         stmt.setString(9, pessoa.getEndereco().getUf());
         stmt.setString(10, pessoa.getEndereco().getCep());
+        stmt.setInt(11, 1);
 
         stmt.execute();
         int id;

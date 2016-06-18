@@ -13,6 +13,7 @@ public class Funcionario extends Pessoa implements Entidade {
     private float cargaHoraria;
     private String funcao;
     private String regimeDeTrabalho;
+    private String senha;
 
     /**
      * Cria um novo funcionario.
@@ -28,13 +29,17 @@ public class Funcionario extends Pessoa implements Entidade {
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
     public Funcionario(String nome, String cpf, String rg, String email, Endereco endereco,
-                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho) {
-        super(nome, cpf, rg, email, endereco);
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
+        super(nome, cpf, rg, email, endereco,status);
         this.setSalario(salario);
         this.setCargaHoraria(cargaHoraria);
         this.setFuncao(funcao);
         this.setRegimeDeTrabalho(regimeDeTrabalho);
+        this.setSenha(senha);
+
     }
+
+
 
     /**
      * Instancia funcionario com id. Utilizado apenas para instanciar entidade ja inseridas no banco.
@@ -51,8 +56,8 @@ public class Funcionario extends Pessoa implements Entidade {
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
     public Funcionario(int idFuncionario, String nome, String cpf, String rg, String email, Endereco endereco,
-                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho) {
-        this(nome, cpf, rg, email, endereco, salario, cargaHoraria, funcao, regimeDeTrabalho);
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
+        this(nome, cpf, rg, email, endereco, salario, cargaHoraria, funcao, regimeDeTrabalho, senha, status);
         this.setIdPessoa(idFuncionario);
     }
 
@@ -137,5 +142,13 @@ public class Funcionario extends Pessoa implements Entidade {
     }
     public void setId(int id){
         this.setIdPessoa(id);
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

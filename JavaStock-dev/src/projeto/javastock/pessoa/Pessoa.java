@@ -14,41 +14,47 @@ public abstract class Pessoa implements Entidade {
     private String rg;
     private String email;
     private Endereco endereco;
+    private int status;
 
     /**
      * Cria uma nova pessoa.
-     * @param nome Nome da pessoa.
-     * @param cpf CPF da pessoa.
-     * @param rg Numero da carteira de identidade da pessoa.
-     * @param email Email da pessoa.
+     *
+     * @param nome     Nome da pessoa.
+     * @param cpf      CPF da pessoa.
+     * @param rg       Numero da carteira de identidade da pessoa.
+     * @param email    Email da pessoa.
      * @param endereco Endereco da pessoa.
+     * @param  status Status da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Pessoa(String nome, String cpf, String rg, String email, Endereco endereco) {
+    public Pessoa(String nome, String cpf, String rg, String email, Endereco endereco, int status) {
         this.setNome(nome);
         this.setCpf(cpf);
         this.setRg(rg);
         this.setEmail(email);
         this.setEndereco(endereco);
+        this.setStatus(status);
     }
 
     /**
      * Instancia pessoa com id. Utilizado apenas para instanciar entidade ja inseridas no banco.
+     *
      * @param idPessoa Id da pessoa.
-     * @param nome Nome da pessoa.
-     * @param cpf CPF da pessoa.
-     * @param rg Numero da carteira de identidade da pessoa.
-     * @param email Email da pessoa.
+     * @param nome     Nome da pessoa.
+     * @param cpf      CPF da pessoa.
+     * @param rg       Numero da carteira de identidade da pessoa.
+     * @param email    Email da pessoa.
      * @param endereco Endereco da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    Pessoa(int idPessoa, String nome, String cpf, String rg, String email, Endereco endereco) {
-        this(nome, cpf, rg, email, endereco);
+    Pessoa(int idPessoa, String nome, String cpf, String rg, String email, Endereco endereco, int status) {
+        this(nome, cpf, rg, email, endereco, status);
         this.setIdPessoa(idPessoa);
     }
 
     /**
      * Obtem o id da pessoa.
+     *
      * @return Id da pessoa
      */
     public int getIdPessoa() {
@@ -57,6 +63,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o id da pessoa.
+     *
      * @param idPessoa Novo Id da pessoa.
      * @throws RuntimeException Caso o valor informado for menor que zero.
      */
@@ -69,6 +76,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Obtem o nome da pessoa.
+     *
      * @return Nome da pessoa.
      */
     public String getNome() {
@@ -77,6 +85,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o nome da pessoa.
+     *
      * @param nome Novo nome..
      * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
@@ -89,6 +98,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Obtem o numero da carteira de identidade da pessoa.
+     *
      * @return RG da pessoa.
      */
     public String getRg() {
@@ -97,6 +107,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o RG da pessoa.
+     *
      * @param rg Novo RG.
      * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
@@ -109,6 +120,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Obtem o CPF da pessoa.
+     *
      * @return CPF da pessoa
      */
     public String getCpf() {
@@ -117,6 +129,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o CPF da pessoa.
+     *
      * @param cpf Novo CPF.
      * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
@@ -129,6 +142,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Obtem o email da pessoa.
+     *
      * @return Email da pessoa
      */
     public String getEmail() {
@@ -137,6 +151,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o email da pessoa.
+     *
      * @param email Novo email.
      * @throws RuntimeException Caso o valor informado for vazio ou nulo.
      */
@@ -149,6 +164,7 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Obtem o endereco da pessoa.
+     *
      * @return Endereco da pessoa
      */
     public Endereco getEndereco() {
@@ -157,9 +173,26 @@ public abstract class Pessoa implements Entidade {
 
     /**
      * Altera o endereco da pessoa.
+     *
      * @param endereco Novo endereco.
      */
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    /**
+     * Pega o status.
+     * @return Status.
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * Insere e altea o status.
+     * @param status
+     */
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

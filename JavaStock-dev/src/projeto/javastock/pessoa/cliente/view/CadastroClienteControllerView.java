@@ -46,7 +46,7 @@ public class CadastroClienteControllerView implements Initializable {
         if (ClienteController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(), cidade.getText(), uf.getText(), cep.getText(), 1) != -1) {
 
             new BotaoView("Atenção!", "Cadastro Feito com Sucesso").start(new Stage());
-           
+
             limparCliente();
         }
 

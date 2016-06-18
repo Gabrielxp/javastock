@@ -1,21 +1,36 @@
 package javastock.produto;
 
 
+import junit.framework.TestCase;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Created by fernando on 6/17/16.
  */
-public class ProdutoDAOTest {
+public class ProdutoDAOTest extends TestCase {
 
-       @Test
-       public void testeSalvar() {
-            Produto p1 = new Produto("Skol", "Cerveja", "Bebidas", "Matheus", (float) 3.00, 100, 2, 20);
-            Produto p2 = new Produto("Antartica", "Cerveja", "Bebidas", "Matheus", (float) 4.50, 200, (float) 2.5, 20);
-            ProdutoDAO.getInstancia().salvar(p1);
-            ProdutoDAO.getInstancia().salvar(p2);
-       }
+    @Test
+    public void testeSalvar() {
+        Produto p1 = new Produto("Skol", "Cerveja", "Bebidas", "Matheus", (float) 3.00, 100, 2, 20);
+        int salvar = ProdutoDAO.getInstancia().salvar(p1);
+        boolean sucesso = salvar > 0;
+        assertEquals(true, sucesso);
+    }
 
+    @Test
+    public void testeListar() {
+        List<Produto> lista = ProdutoDAO.getInstancia().listar();
+        assertNotNull(lista);
+    }
 
+/*   public void testeAtualizar() {
+        Produto p = ProdutoDAO.getInstancia().getById(1);
+        p.setMargemLucro(3);
+        ProdutoDAO.getInstancia().salvar(p);
 
+        p = ProdutoDAO.getInstancia().getById(1);
+        assertEquals(p.getMargemLucro(), 3);
+    }*/
 }

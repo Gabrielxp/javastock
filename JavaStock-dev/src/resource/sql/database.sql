@@ -13,7 +13,6 @@ CREATE TABLE Pessoa (
  status SMALLINT NOT NULL
 );
 
-
 CREATE TABLE Telefone (
  cod_telefone SERIAL CONSTRAINT pk_telefone PRIMARY KEY,
  telefone VARCHAR(15) NOT NULL,

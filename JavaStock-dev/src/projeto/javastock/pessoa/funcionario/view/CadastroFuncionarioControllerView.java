@@ -110,5 +110,4 @@ public class CadastroFuncionarioControllerView implements Initializable {
         status.setSelected(true);
     }
 
-
 }

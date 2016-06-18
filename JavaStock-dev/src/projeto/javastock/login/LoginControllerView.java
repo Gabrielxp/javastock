@@ -1,25 +1,17 @@
 package javastock.login;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javastock.login.equipe.EquipeView;
 import javastock.pessoa.funcionario.Funcionario;
 import javastock.principal.PrincipalView;
-import jidefx.scene.control.decoration.DecorationPane;
-import sun.rmi.runtime.Log;
-import validation.Validation;
 
-import javax.swing.*;
-import javax.swing.text.View;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -76,12 +68,12 @@ public class LoginControllerView implements Initializable {
     }
 
     public void validaDigitacao() {
-        if (senha.getText().length() > 18) {
+        if (senha.getText().length() >= 18) {
             senha.setStyle("-fx-background-color: rgba(255, 41, 26, 0.41)");
         } else {
             senha.setStyle("-fx-background-color: transparent");
         }
-        if (login.getText().length() > 58) {
+        if (login.getText().length() >= 58) {
             login.setStyle("-fx-background-color: rgba(255, 41, 26, 0.41)");
         } else {
             login.setStyle("-fx-background-color: transparent");

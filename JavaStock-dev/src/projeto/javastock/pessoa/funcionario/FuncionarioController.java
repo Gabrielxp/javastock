@@ -41,12 +41,12 @@ public class FuncionarioController {
      */
     public void criar(String nome, String cpf, String rg, String email, String rua,
                       int numero, String bairro, String cidade, String uf, String cep, float salario,
-                      float cargaHoraria, String funcao, String regimeDeTrabalho) {
+                      float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
 
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
 
         Funcionario funcionario = new Funcionario(nome, cpf, rg, email, endereco,
-                salario, cargaHoraria, funcao, regimeDeTrabalho);
+                salario, cargaHoraria, funcao, regimeDeTrabalho, senha, status);
 
         this.funcionarioDAO.salvar(funcionario);
     }

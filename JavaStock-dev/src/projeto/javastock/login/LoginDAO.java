@@ -34,7 +34,7 @@ public class LoginDAO {
                 int id = resultSet.getInt("F_ID_PESSOA");
                 String funcao = resultSet.getString("FUNCAO");
                 System.out.println(nome + id + funcao);
-                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "", "1", "1", "1"), 1, 1, funcao, " d");
+                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "", "1", "1", "1"), 1, 1, funcao, " d", "1",1);
             }
 
 

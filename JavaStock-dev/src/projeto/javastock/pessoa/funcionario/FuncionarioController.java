@@ -40,13 +40,13 @@ public class FuncionarioController {
      * @param regimeDeTrabalho Regime de trabalho do funcionario.
      */
     public void criar(String nome, String cpf, String rg, String email, String rua,
-                      int numero, String bairro, String cidade, String uf, String cep, float salario,
-                      float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
+                      int numero, String bairro, String cidade, String uf, String cep, int status, float salario,
+                      float cargaHoraria, String funcao, String regimeDeTrabalho, String senha) {
 
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
 
-        Funcionario funcionario = new Funcionario(nome, cpf, rg, email, endereco,
-                salario, cargaHoraria, funcao, regimeDeTrabalho, senha, status);
+        Funcionario funcionario = new Funcionario(nome, cpf, rg, email, endereco, status,
+                salario, cargaHoraria, funcao, regimeDeTrabalho, senha);
 
         this.funcionarioDAO.salvar(funcionario);
     }

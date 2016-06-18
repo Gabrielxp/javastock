@@ -57,7 +57,7 @@ public class FuncionarioDAO implements DAO<Funcionario> {
         int idPessoa = PessoaDAO.getInstancia().salvar(funcionario);
 
         String sql = "INSERT INTO Funcionario (f_id_pessoa, funcao, salario, carga_horario,"
-                + "regime_trabalho, senha, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + "regime_trabalho, senha) VALUES (?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setInt(1, idPessoa);
@@ -66,7 +66,6 @@ public class FuncionarioDAO implements DAO<Funcionario> {
         stmt.setFloat(4, funcionario.getCargaHoraria());
         stmt.setString(5, funcionario.getRegimeDeTrabalho());
         stmt.setString(6, funcionario.getSenha());
-        stmt.setInt(7, funcionario.getStatus());
 
         stmt.execute();
         stmt.close();

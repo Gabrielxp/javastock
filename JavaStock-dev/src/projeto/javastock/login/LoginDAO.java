@@ -1,6 +1,5 @@
 package javastock.login;
 
-import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
 import javastock.misc.Endereco;
 import javastock.pessoa.funcionario.Funcionario;
@@ -34,9 +33,8 @@ public class LoginDAO {
                 int id = resultSet.getInt("F_ID_PESSOA");
                 String funcao = resultSet.getString("FUNCAO");
                 System.out.println(nome + id + funcao);
-                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "", "1", "1", "1"), 1, 1, funcao, " d", "1",1);
+                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "1", "1", "1", "1"), 1, 1, 20, " d", "1", "1");
             }
-
 
             pstm.close();
 

@@ -14,7 +14,6 @@ public class Funcionario extends Pessoa implements Entidade {
     private String funcao;
     private String regimeDeTrabalho;
     private String senha;
-    private int status;
 
     /**
      * Cria um novo funcionario.
@@ -29,15 +28,14 @@ public class Funcionario extends Pessoa implements Entidade {
      * @param regimeDeTrabalho Regime de trabalho do funcionario.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Funcionario(String nome, String cpf, String rg, String email, Endereco endereco,
-                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
-        super(nome, cpf, rg, email, endereco);
+    public Funcionario(String nome, String cpf, String rg, String email, Endereco endereco, int status,
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha) {
+        super(nome, cpf, rg, email, endereco, status);
         this.setSalario(salario);
         this.setCargaHoraria(cargaHoraria);
         this.setFuncao(funcao);
         this.setRegimeDeTrabalho(regimeDeTrabalho);
         this.setSenha(senha);
-        this.setStatus(status);
 
     }
 
@@ -55,11 +53,12 @@ public class Funcionario extends Pessoa implements Entidade {
      * @param cargaHoraria Carga horaria do funcionario.
      * @param funcao Funcao do funcionario.
      * @param regimeDeTrabalho Regime de trabalho do funcionario.
+     * @param senha
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Funcionario(int idFuncionario, String nome, String cpf, String rg, String email, Endereco endereco,
-                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha, int status) {
-        this(nome, cpf, rg, email, endereco, salario, cargaHoraria, funcao, regimeDeTrabalho, senha, status);
+    public Funcionario(int idFuncionario, String nome, String cpf, String rg, String email, Endereco endereco, int status,
+                       float salario, float cargaHoraria, String funcao, String regimeDeTrabalho, String senha) {
+        this(nome, cpf, rg, email, endereco, status, salario, cargaHoraria, funcao, regimeDeTrabalho, senha);
         this.setIdPessoa(idFuncionario);
     }
 
@@ -152,22 +151,5 @@ public class Funcionario extends Pessoa implements Entidade {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-
-    /**
-     * Pega o status.
-     * @return Status.
-     */
-    public int getStatus() {
-        return status;
-    }
-
-    /**
-     * Insere e altea o status.
-     * @param status
-     */
-    public void setStatus(int status) {
-        this.status = status;
     }
 }

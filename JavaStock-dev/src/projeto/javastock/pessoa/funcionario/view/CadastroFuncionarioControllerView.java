@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javastock.pessoa.funcionario.Funcionario;
 import javastock.pessoa.funcionario.FuncionarioController;
 
@@ -57,7 +56,7 @@ public class CadastroFuncionarioControllerView implements Initializable {
         senha.getText();
         if (idFuncionario == -1) {
             FuncionarioController.getInstancia().criar(nome.getText(), cpf.getText(), rg.getText(), email.getText(), rua.getText(), Integer.parseInt(numero.getText()), bairro.getText(),
-                    cidade.getText(), uf.getText(), cep.getText(), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText(),senha.getText(),1);
+                    cidade.getText(), uf.getText(), cep.getText(), Integer.parseInt(status.getText()), Float.parseFloat(salario.getText()), Float.parseFloat(cargaHoraria.getText()), funcao.getValue().toString(), regimeTrabalho.getText(),senha.getText());
             limparFuncionario();
         } else {
             //fazer update

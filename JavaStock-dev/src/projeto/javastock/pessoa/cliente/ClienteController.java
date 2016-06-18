@@ -1,6 +1,7 @@
 package javastock.pessoa.cliente;
 
 import javastock.misc.Endereco;
+import javastock.pessoa.funcionario.Funcionario;
 
 /**
  * Controller de Cliente.
@@ -22,7 +23,7 @@ public class ClienteController {
 
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
 
-        Cliente cliente = new Cliente(nome, cpf, rg, email, endereco);
+        Cliente cliente = new Cliente(nome, cpf, rg, email, endereco, status);
 
         this.clienteDAO.salvar(cliente);
     }

@@ -9,7 +9,8 @@ CREATE TABLE Pessoa (
  cep VARCHAR(15) NOT NULL,
  email VARCHAR(60) NOT NULL,
  rg VARCHAR(15) NOT NULL,
- cpf VARCHAR(15) NOT NULL
+ cpf VARCHAR(15) NOT NULL,
+ status SMALLINT NOT NULL
 );
 
 
@@ -32,7 +33,6 @@ CREATE TABLE Funcionario (
  funcao INT NOT NULL,
  regime_trabalho VARCHAR(40) NOT NULL,
  senha varchar(20) NOT NULL,
- status SMALLINT NOT NULL,
  f_id_pessoa INT NOT NULL,
  CONSTRAINT pk_funcionario PRIMARY KEY (f_id_pessoa),
  CONSTRAINT fk_funcionario FOREIGN KEY (f_id_pessoa) REFERENCES Pessoa (id_pessoa)

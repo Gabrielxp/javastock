@@ -9,6 +9,7 @@ CREATE TABLE Pessoa (
  cep VARCHAR(15) NOT NULL,
  email VARCHAR(60) NOT NULL,
  rg VARCHAR(15) NOT NULL,
+ status SMALLINT NOT NULL,
  cpf VARCHAR(15) NOT NULL
 );
 
@@ -30,7 +31,6 @@ CREATE TABLE Funcionario (
  funcao INT NOT NULL,
  salario FLOAT NOT NULL,
  carga_horario NUMERIC NOT NULL,
- fg_ativo SMALLINT NOT NULL,
  senha varchar(20) NOT NULL,
  regime_trabalho VARCHAR(40) NOT NULL,
  f_id_pessoa INT NOT NULL,

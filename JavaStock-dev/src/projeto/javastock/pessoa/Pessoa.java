@@ -14,7 +14,6 @@ public abstract class Pessoa implements Entidade {
     private String rg;
     private String email;
     private Endereco endereco;
-    private int status;
 
     /**
      * Cria uma nova pessoa.
@@ -24,16 +23,14 @@ public abstract class Pessoa implements Entidade {
      * @param rg       Numero da carteira de identidade da pessoa.
      * @param email    Email da pessoa.
      * @param endereco Endereco da pessoa.
-     * @param  status Status da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    public Pessoa(String nome, String cpf, String rg, String email, Endereco endereco, int status) {
+    public Pessoa(String nome, String cpf, String rg, String email, Endereco endereco) {
         this.setNome(nome);
         this.setCpf(cpf);
         this.setRg(rg);
         this.setEmail(email);
         this.setEndereco(endereco);
-        this.setStatus(status);
     }
 
     /**
@@ -47,8 +44,8 @@ public abstract class Pessoa implements Entidade {
      * @param endereco Endereco da pessoa.
      * @throws RuntimeException Caso algum argumento nao passe pela validacao.
      */
-    Pessoa(int idPessoa, String nome, String cpf, String rg, String email, Endereco endereco, int status) {
-        this(nome, cpf, rg, email, endereco, status);
+    Pessoa(int idPessoa, String nome, String cpf, String rg, String email, Endereco endereco) {
+        this(nome, cpf, rg, email, endereco);
         this.setIdPessoa(idPessoa);
     }
 
@@ -180,19 +177,4 @@ public abstract class Pessoa implements Entidade {
         this.endereco = endereco;
     }
 
-    /**
-     * Pega o status.
-     * @return Status.
-     */
-    public int getStatus() {
-        return status;
-    }
-
-    /**
-     * Insere e altea o status.
-     * @param status
-     */
-    public void setStatus(int status) {
-        this.status = status;
-    }
 }

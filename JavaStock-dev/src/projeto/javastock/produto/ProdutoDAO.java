@@ -15,7 +15,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
     private static final ProdutoDAO instancia = new ProdutoDAO();
 
-    private ProdutoDAO() {}
+    public ProdutoDAO() {}
 
     /**
      * Singleton

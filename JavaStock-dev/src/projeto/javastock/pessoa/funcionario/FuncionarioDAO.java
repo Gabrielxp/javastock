@@ -76,9 +76,25 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
         return idPessoa;
     }
 
-    private int atualizar(Connection connection, Funcionario funcionario) {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
+    private int atualizar(Connection connection, Funcionario funcionario) throws SQLException {
+        super.atualizar(connection, funcionario);
+
+        String sql = "UPDATE Funcionario SET funcao = ?, salario = ?, carga_horario = ?, "
+                + "regime_trabalho = ?, senha = ? WHERE f_id_pessoa = ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+
+        stmt.setInt(1, funcionario.getFuncao().toUpperCase().equals("GERENTE") ? 2 : 1);
+        stmt.setFloat(2, funcionario.getSalario());
+        stmt.setFloat(3, funcionario.getCargaHoraria());
+        stmt.setString(4, funcionario.getRegimeDeTrabalho());
+        stmt.setString(5, funcionario.getSenha());
+        stmt.setInt(6, funcionario.getIdPessoa());
+
+        stmt.execute();
+        stmt.close();
+
+        return funcionario.getIdPessoa();
     }
 
     public Funcionario getById(int id) {

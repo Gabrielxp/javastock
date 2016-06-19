@@ -41,9 +41,28 @@ public abstract class PessoaDAO {
         return id;
     }
 
-    protected int atualizar(Connection connection, Pessoa pessoa) {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
+    protected int atualizar(Connection connection, Pessoa pessoa) throws SQLException {
+        String sql = "UPDATE Pessoa SET nome = ?, email = ?, rg = ?, cpf = ?, rua = ?, " +
+                "numero = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, status = ? WHERE id_pessoa = ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        stmt.setString(1, pessoa.getNome());
+        stmt.setString(2, pessoa.getEmail());
+        stmt.setString(3, pessoa.getRg());
+        stmt.setString(4, pessoa.getCpf());
+        stmt.setString(5, pessoa.getEndereco().getRua());
+        stmt.setInt(6, pessoa.getEndereco().getNumero());
+        stmt.setString(7, pessoa.getEndereco().getBairro());
+        stmt.setString(8, pessoa.getEndereco().getCidade());
+        stmt.setString(9, pessoa.getEndereco().getUf());
+        stmt.setString(10, pessoa.getEndereco().getCep());
+        stmt.setInt(11, pessoa.getStatus());
+        stmt.setInt(12, pessoa.getIdPessoa());
+
+        stmt.execute();
+        stmt.close();
+
+        return pessoa.getIdPessoa();
     }
 
     protected Pessoa getById(Connection connection, int id) throws SQLException {

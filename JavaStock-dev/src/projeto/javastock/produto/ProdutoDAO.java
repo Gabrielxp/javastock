@@ -156,7 +156,10 @@ public class ProdutoDAO implements DAO<Produto> {
         stmt.close();
 
         return id;
+    }
 
+    public Produto getById(int id) {
+        throw new NotImplementedException();
     }
 
 }

@@ -19,5 +19,12 @@ public interface DAO<T extends Entidade> {
      * @return Lista de registros encontrados.
      */
     List<T> listar();
+
+    /**
+     * Busca entidade que tem a PK informada.
+     * @param id PK do registro.
+     * @return Entidade encontrada.
+     */
+    T getById(int id);
 }
 

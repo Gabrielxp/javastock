@@ -2,6 +2,8 @@ package javastock.pessoa.funcionario;
 
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
+import javastock.misc.Endereco;
+import javastock.pessoa.Pessoa;
 import javastock.pessoa.PessoaDAO;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -9,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,36 +83,38 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
 
     public Funcionario getById(int id) {
         String sql = "SELECT * FROM Funcionario WHERE f_id_pessoa = ? LIMIT 1";
+        Funcionario funcionario = null;
 
         try (Connection connection = this.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(0, id);
+            stmt.setInt(1, id);
             ResultSet registros = stmt.executeQuery();
-/*
-            while (registros.next()) {
-                int id = registros.getInt("id_produto");
-                String nome = registros.getString("nome");
-                String descricao = registros.getString("descricao");
-                String categoria = registros.getString("categoria");
-                String fornecedor = registros.getString("fornecedor");
-                float precoDeEntrada = registros.getFloat("preco_entrada");
-                int quantidadeEstoque = registros.getInt("quantidade_estoque");
-                double margemLucro = registros.getDouble("margem_lucro");
-                int quantidadeMinima = registros.getInt("quantidade_minima");
+            registros.next();
 
-                Produto produto = new Produto(id, nome, descricao, categoria, fornecedor,
-                        precoDeEntrada, quantidadeEstoque, margemLucro, quantidadeMinima);
+            String funcao = registros.getInt("funcao") == 2 ? "GERENTE" : "VENDEDOR";
+            int cargaHoraria = registros.getInt("carga_horario");
+            float salario = registros.getFloat("salario");
+            String regimeDeTrabalho = registros.getString("regime_trabalho");
+            String senha = registros.getString("senha");
 
-                produtos.add(produto);
-            }
+            stmt.close();
 
-            stmt.close();**/
+            Pessoa pessoa = super.getById(connection, id);
+            String nome = pessoa.getNome();
+            String cpf = pessoa.getCpf();
+            String rg = pessoa.getRg();
+            String email = pessoa.getEmail();
+            Endereco endereco = pessoa.getEndereco();
+            int status = pessoa.getStatus();
+
+            funcionario = new Funcionario(id, nome, cpf, rg, email, endereco, status, salario,
+                    cargaHoraria, funcao, regimeDeTrabalho, senha);
 
         } catch (SQLException e) {
             System.out.print(e);
         }
 
-        return null;
+        return funcionario;
     }
 
 }

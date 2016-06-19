@@ -31,9 +31,16 @@ public class LoginDAO {
             if (resultSet.next()) {
                 String nome = resultSet.getString("NOME");
                 int id = resultSet.getInt("F_ID_PESSOA");
-                String funcao = resultSet.getString("FUNCAO");
+                int funcao = resultSet.getInt("FUNCAO");
+
+                String func;
+                if (funcao == 1) {
+                    func = "vendedor";
+                } else {
+                    func = "gerente";
+                }
                 System.out.println(nome + id + funcao);
-                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "1", "1", "1", "1"), 1, 1, 20, " d", "1", "1");
+                funcionario = new Funcionario(id, nome, "1", "1", "1", new Endereco("1", 1, "1", "1", "1", "1"), 1, 1, 20, func, "1", "1");
             }
 
             pstm.close();

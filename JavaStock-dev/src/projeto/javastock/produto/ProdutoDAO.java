@@ -15,10 +15,12 @@ public class ProdutoDAO implements DAO<Produto> {
 
     private static final ProdutoDAO instancia = new ProdutoDAO();
 
-    private ProdutoDAO() {}
+    private ProdutoDAO() {
+    }
 
     /**
      * Singleton
+     *
      * @return Instancia de ProdutoDAO.
      */
     public static ProdutoDAO getInstancia() {
@@ -118,7 +120,7 @@ public class ProdutoDAO implements DAO<Produto> {
         stmt.setInt(6, produto.getQuantidadeEstoque());
         stmt.setDouble(7, produto.getMargemLucro());
         stmt.setInt(8, produto.getQuantidadeMinima());
-        stmt.setInt(9,produto.getIdProduto());
+        stmt.setInt(9, produto.getIdProduto());
 
         stmt.executeUpdate();
         int id;
@@ -132,6 +134,29 @@ public class ProdutoDAO implements DAO<Produto> {
         stmt.close();
 
         return id;
+    }
+
+    public int descontarProduto(int idProduto, int quantidade) throws SQLException {
+        String sql = "UPDATE  Produto SET  quantidade_estoque = quantidade_estoque - ? WHERE id_produto = ?";
+
+        PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        stmt.setInt(1, quantidade);
+        stmt.setInt(2, idProduto);
+
+
+        stmt.executeUpdate();
+        int id;
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next())
+            id = rs.getInt(1);
+        else
+            throw new RuntimeException("Erro ao obter id");
+
+        stmt.close();
+
+        return id;
+
     }
 
 }

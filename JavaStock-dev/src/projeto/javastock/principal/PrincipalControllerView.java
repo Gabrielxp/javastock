@@ -7,6 +7,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javastock.login.LoginView;
 import javastock.pessoa.funcionario.Funcionario;
 import javastock.venda.view.VendaView;
 
@@ -109,8 +110,10 @@ public class PrincipalControllerView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         funcionarioLogado = PrincipalView.funcionarioLogado;
-        if (!funcionarioLogado.getFuncao().equals(1)) {
+        if (funcionarioLogado.getFuncao().equals("gerente")) {
             administrativo.disableProperty().setValue(false);
+        }else{
+            administrativo.disableProperty().setValue(true);
         }
 
         nome.setStyle("-fx-text-fill: white; fx-font-weight:bold");
@@ -136,7 +139,8 @@ public class PrincipalControllerView implements Initializable {
         new VendaView().start(new Stage());
     }
 
-    public void sair() {
-        System.exit(0);
+    public void sair() throws Exception {
+        PrincipalView.stage.close();
+      new  LoginView().start(new Stage());
     }
 }

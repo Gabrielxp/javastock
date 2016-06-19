@@ -7,6 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javastock.botaoMensagens.BotaoView;
+import javastock.principal.PrincipalView;
 import javastock.produto.Produto;
 import javastock.produto.ProdutoDAO;
 import javastock.produto.view.ProdutoProperty;
@@ -24,6 +27,8 @@ public class VendaControllerView implements Initializable {
     private TextField total;
     @FXML
     private TextField codigoProd;
+    @FXML
+    private TextField valorDesconto;
     @FXML
     private TableView<ProdutoProperty> tabelaProdutos;
     @FXML
@@ -64,7 +69,7 @@ public class VendaControllerView implements Initializable {
     public void selecionaProduto() {
         Produto produto = null;
         float id = Float.parseFloat(codigoProd.getText());
-        for(Produto prod : this.produtos) {
+        for (Produto prod : this.produtos) {
             if (prod.getIdProduto() == id)
                 produto = prod;
         }
@@ -103,21 +108,39 @@ public class VendaControllerView implements Initializable {
     /**
      * Neste metodo realmente é criado o venda, e salvo os carrinho no venda_produtos.
      */
-    public void fecharVenda() {
+    public void fecharVenda() throws Exception {
         Map<Integer, Integer> compras = new HashMap<>();
         for (ProdutoProperty produto : tabelaProdutos.getItems())
             compras.put(Integer.parseInt(produto.getCodProd()), Integer.parseInt(produto.getQuantidade()));
 
-        VendaController.getInstancia().criar(compras, 0, 1);
-
+        VendaController.getInstancia().criar(compras, Integer.parseInt(valorDesconto.getText()), PrincipalView.funcionarioLogado.getIdPessoa());
+        new BotaoView("", "Vendido!").start(new Stage());
         //limpaTela
         produtosData.clear();
         total.clear();
-
+        valorDesconto.clear();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         carrinho = new ArrayList<>();
+    }
+
+    public void aplicarDesconto() {
+        double valor = Float.parseFloat(total.getText());
+        double desconto = Float.parseFloat(valorDesconto.getText());
+        desconto = desconto / 100;
+        valor -= valor * desconto;
+        total.setText(valor + "");
+    }
+
+    public void buscarCliente() {
+
+    }
+
+    public void sair() throws Exception {
+        PrincipalView.stage.setFullScreen(true);
+        VendaView.close();
+
     }
 }

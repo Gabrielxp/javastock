@@ -16,7 +16,7 @@ class LocalConfig implements Config {
 
     public String getEnderecoBD() {
         //throw new RuntimeException("Trocar dados do banco e remover essa linha");
-        return "localhost:5432/javastock";
+        return "localhost:5432/postgres";
     }
 
     public String getUsuarioBD() {
@@ -24,7 +24,7 @@ class LocalConfig implements Config {
     }
 
     public String getSenhaBD() {
-        return "jiofre";
+        return "gabriel020596";
     }
 
 }

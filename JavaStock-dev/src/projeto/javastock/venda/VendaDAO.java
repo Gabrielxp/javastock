@@ -7,6 +7,7 @@ import java.util.Map;
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
 import javastock.produto.Produto;
+import javastock.produto.ProdutoDAO;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
@@ -72,7 +73,7 @@ public class VendaDAO implements DAO<Venda> {
             throws SQLException {
         String sql = "INSERT INTO venda_produto (vp_id_venda, vp_id_produto, quantidade," +
                 "valor_unitario) VALUES (?, ?, ?, ?)";
-
+        ProdutoDAO.getInstancia().descontarProduto(produto.getIdProduto(),quantidade);
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setInt(1, idVenda);
         stmt.setInt(2, produto.getIdProduto());

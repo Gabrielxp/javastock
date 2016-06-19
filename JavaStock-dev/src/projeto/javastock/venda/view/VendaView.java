@@ -12,6 +12,7 @@ import javafx.stage.Stage;
  * Created by gabri on 05/06/2016.
  */
 public class VendaView extends Application {
+   static Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -23,10 +24,14 @@ public class VendaView extends Application {
         primaryStage.getIcons().add(new Image("img/sacola.png"));
         primaryStage.setTitle("JavaStock Comercial Plataform");
         primaryStage.setFullScreen(true);
+        stage = primaryStage;
         primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+    public static void close(){
+        stage.close();
     }
 }

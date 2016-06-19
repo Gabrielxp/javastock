@@ -1,54 +1,15 @@
 package javastock.pessoa;
 
-import javastock.misc.DAO;
-import javastock.misc.DatabaseFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.*;
-import java.util.List;
 
 /**
  * Classe Responsavel por fazer operacoes da entidade Funcionario no banco de dados.
  */
-public class PessoaDAO implements DAO<Pessoa> {
+public abstract class PessoaDAO {
 
-    private static final PessoaDAO instancia = new PessoaDAO();
-
-    private PessoaDAO() {
-    }
-
-    /**
-     * Singleton
-     *
-     * @return Instancia de PessoaDAO.
-     */
-    public static PessoaDAO getInstancia() {
-        return instancia;
-    }
-
-    private Connection getConnection() throws SQLException {
-        return new DatabaseFactory().getConnection();
-    }
-
-    public int salvar(Pessoa pessoa) {
-        try (Connection connection = this.getConnection()) {
-            if (pessoa.getIdPessoa() == -1)
-                return this.criar(connection, pessoa);
-            else
-                return this.atualizar(connection, pessoa);
-        } catch (SQLException e) {
-            System.out.print(e);
-        }
-
-        return -1;
-    }
-
-    public List<Pessoa> listar() {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
-    }
-
-    private int criar(Connection connection, Pessoa pessoa) throws SQLException {
+    protected int criar(Connection connection, Pessoa pessoa) throws SQLException {
         String sql = "INSERT INTO Pessoa (nome, email, rg, cpf, rua, numero, bairro, " +
                 "cidade, uf, cep, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -79,7 +40,7 @@ public class PessoaDAO implements DAO<Pessoa> {
         return id;
     }
 
-    private int atualizar(Connection connection, Pessoa pessoa) {
+    protected int atualizar(Connection connection, Pessoa pessoa) {
         // @TODO Terceira entrega.
         throw new NotImplementedException();
     }

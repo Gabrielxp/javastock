@@ -20,6 +20,15 @@ public interface DAO<T extends Entidade> {
      */
     List<T> listar();
 
+<<<<<<< HEAD
 
+=======
+    /**
+     * Busca entidade que tem a PK informada.
+     * @param id PK do registro.
+     * @return Entidade encontrada.
+     */
+    T getById(int id);
+>>>>>>> origin/master
 }
 

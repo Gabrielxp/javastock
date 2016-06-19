@@ -84,7 +84,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </ImageView>
-                <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="249.0" layoutY="7.0">
+                <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="249.0" layoutY="7.0" onMousePressed="#telaInicial">
                     <image>
                         <Image url="@../img/icone-casa.png" />
                     </image>
@@ -127,6 +127,7 @@
             <fx:include fx:id="cadastroFunc" source="CadastroFuncionarios.fxml" />
             <fx:include fx:id="edicaoFunc" source="EdicaoFuncionarios.fxml" />
             <fx:include fx:id="cadastroCli" source="CadastroClientes.fxml" />
+            <fx:include fx:id="inicial" source="Inicial.fxml" />
 
 
         </AnchorPane>

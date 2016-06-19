@@ -2,6 +2,7 @@ package javastock.produto;
 
 import javastock.misc.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,12 +67,25 @@ public class ProdutoController {
         }
         return null;
     }
+
     public int atualizar(int id, String nome, String descricao, String categoria, String fornecedor,
-                          float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima){
-        Produto produto = new Produto(id,nome, descricao, categoria, fornecedor, precoEntrada,
+                         float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima) {
+        Produto produto = new Produto(id, nome, descricao, categoria, fornecedor, precoEntrada,
                 quantidadeEstoque, margemLucro, quantidadeMinima);
 
         return this.produtoDAO.salvar(produto);
+    }
+
+    public List<Produto> abaixoEstoque() {
+        List<Produto> produtos = produtoDAO.listar();
+        List<Produto> produtosComEstoqueBaixo = new ArrayList<>();
+        for (Produto produto : produtos) {
+            if (produto.getQuantidadeEstoque() < produto.getQuantidadeMinima()) {
+                produtosComEstoqueBaixo.add(produto);
+            }
+        }
+
+        return produtosComEstoqueBaixo;
     }
 
 }

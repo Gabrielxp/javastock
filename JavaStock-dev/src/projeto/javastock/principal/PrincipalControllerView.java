@@ -7,11 +7,16 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javastock.botaoMensagens.BotaoView;
 import javastock.login.LoginView;
 import javastock.pessoa.funcionario.Funcionario;
+import javastock.produto.Produto;
+import javastock.produto.ProdutoController;
 import javastock.venda.view.VendaView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -52,6 +57,9 @@ public class PrincipalControllerView implements Initializable {
     AnchorPane cadastroCli;
 
     @FXML
+    AnchorPane inicial;
+
+    @FXML
     Label nome;
 
     public static Funcionario funcionarioLogado;
@@ -68,9 +76,12 @@ public class PrincipalControllerView implements Initializable {
         edicaoFunc.disableProperty().setValue(true);
         cadastroCli.setVisible(false);
         cadastroCli.disableProperty().setValue(true);
+        inicial.setVisible(false);
+
     }
 
     public void listagemP() {
+        inicial.setVisible(false);
         cadastroFunc.setVisible(false);
         cadastroFunc.disableProperty().setValue(true);
         cadastroP.setVisible(false);
@@ -97,6 +108,7 @@ public class PrincipalControllerView implements Initializable {
     }
 
     public void edicaoFuncionarios() {
+        inicial.setVisible(false);
         cadastroP.setVisible(false);
         cadastroP.disableProperty().setValue(true);
         listagemP.disableProperty().setValue(true);
@@ -112,7 +124,20 @@ public class PrincipalControllerView implements Initializable {
         funcionarioLogado = PrincipalView.funcionarioLogado;
         if (funcionarioLogado.getFuncao().equals("gerente")) {
             administrativo.disableProperty().setValue(false);
-        }else{
+
+            List<Produto> produtos = new ArrayList<>();
+            produtos = ProdutoController.getInstancia().abaixoEstoque();
+            if (!produtos.isEmpty()) {
+                String produto = "";
+                for (Produto p : produtos) {
+                    produto = produto.concat("-----------------\n" +
+                            "ID PRODUTO:" + p.getIdProduto() + " NOME:" + p.getNome()
+                            + "\n QUANTIDADE EM ESTOQUE: " + p.getQuantidadeEstoque()
+                            + " QUANTIDADE MÍNIMA:" + p.getQuantidadeMinima() + "\n");
+                }
+               
+            }
+        } else {
             administrativo.disableProperty().setValue(true);
         }
 
@@ -130,7 +155,17 @@ public class PrincipalControllerView implements Initializable {
         cadastroCli.setVisible(false);
         cadastroCli.disableProperty().setValue(true);
     }
-    public void cadastroClientes(){
+
+    public void cadastroClientes() {
+        inicial.setVisible(false);
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(true);
+        listagemP.setVisible(false);
+        listagemP.disableProperty().setValue(true);
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
         cadastroCli.setVisible(true);
         cadastroCli.disableProperty().setValue(false);
     }
@@ -141,6 +176,11 @@ public class PrincipalControllerView implements Initializable {
 
     public void sair() throws Exception {
         PrincipalView.stage.close();
-      new  LoginView().start(new Stage());
+        new LoginView().start(new Stage());
+    }
+
+    public void telaInicial() {
+        inicial.setVisible(true);
+
     }
 }

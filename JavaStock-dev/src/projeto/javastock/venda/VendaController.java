@@ -54,7 +54,6 @@ public class VendaController {
 
         this.vendaDAO.salvar(venda);
     }
-
     /**
      * Lista todas as vendas contidas no banco de dados.
      * @return Lista de vendas

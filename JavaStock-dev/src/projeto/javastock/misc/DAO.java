@@ -19,5 +19,7 @@ public interface DAO<T extends Entidade> {
      * @return Lista de registros encontrados.
      */
     List<T> listar();
+
+
 }
 

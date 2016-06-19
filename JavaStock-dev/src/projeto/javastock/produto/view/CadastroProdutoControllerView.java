@@ -91,9 +91,13 @@ public class CadastroProdutoControllerView implements Initializable {
                     precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima);
         } else {
 
-            CadastroProdutoView.close();
-            PrincipalView.stage.setFullScreen(true);
-            //SALVAR ALTERACAOOO  PRODUTO AQUI
+
+            if (ProdutoController.getInstancia().atualizar(Integer.parseInt(idProd.getText()), nome, descricao, categoria, fornecedorP,
+                    precoEntradaP, quantidadeEstoque, margemLucroP, quantidadeMinima) != -1) {
+                CadastroProdutoView.close();
+                PrincipalView.stage.setFullScreen(true);
+            }
+
         }
 
         limparProduto();
@@ -119,6 +123,6 @@ public class CadastroProdutoControllerView implements Initializable {
         fornecedor.setText(produto.getFornecedor());
         categoriaProduto.setValue(produto.getCategoria());
         descricaoProduto.setText(produto.getDescricao());
-        idProd.setText(produto.getIdProduto()+"");
+        idProd.setText(produto.getIdProduto() + "");
     }
 }

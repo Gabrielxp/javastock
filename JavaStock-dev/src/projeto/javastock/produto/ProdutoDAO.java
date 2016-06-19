@@ -105,9 +105,33 @@ public class ProdutoDAO implements DAO<Produto> {
         return id;
     }
 
-    private int atualizar(Connection connection, Produto produto) {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
+    private int atualizar(Connection connection, Produto produto) throws SQLException {
+        String sql = "UPDATE  Produto SET nome = ?, descricao = ?, categoria = ?, fornecedor = ?, " +
+                "preco_entrada = ?, quantidade_estoque = ?, margem_lucro = ?, quantidade_minima = ? WHERE id_produto = ?";
+
+        PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        stmt.setString(1, produto.getNome());
+        stmt.setString(2, produto.getDescricao());
+        stmt.setString(3, produto.getCategoria());
+        stmt.setString(4, produto.getFornecedor());
+        stmt.setFloat(5, produto.getPrecoEntrada());
+        stmt.setInt(6, produto.getQuantidadeEstoque());
+        stmt.setDouble(7, produto.getMargemLucro());
+        stmt.setInt(8, produto.getQuantidadeMinima());
+        stmt.setInt(9,produto.getIdProduto());
+
+        stmt.executeUpdate();
+        int id;
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next())
+            id = rs.getInt(1);
+        else
+            throw new RuntimeException("Erro ao obter id");
+
+        stmt.close();
+
+        return id;
     }
 
 }

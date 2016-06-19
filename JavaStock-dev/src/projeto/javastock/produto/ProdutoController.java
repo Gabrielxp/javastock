@@ -66,8 +66,12 @@ public class ProdutoController {
         }
         return null;
     }
-    public void atualizar(Produto produto){
-        this.produtoDAO.salvar(produto);
+    public int atualizar(int id, String nome, String descricao, String categoria, String fornecedor,
+                          float precoEntrada, int quantidadeEstoque, double margemLucro, int quantidadeMinima){
+        Produto produto = new Produto(id,nome, descricao, categoria, fornecedor, precoEntrada,
+                quantidadeEstoque, margemLucro, quantidadeMinima);
+
+        return this.produtoDAO.salvar(produto);
     }
 
 }

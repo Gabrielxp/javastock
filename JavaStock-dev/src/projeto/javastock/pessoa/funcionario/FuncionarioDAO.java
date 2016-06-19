@@ -56,7 +56,6 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
     }
 
     private int criar(Connection connection, Funcionario funcionario) throws SQLException {
-        //int idPessoa = PessoaDAO.getInstancia().salvar(funcionario);
         int idPessoa = super.criar(connection, funcionario);
 
         String sql = "INSERT INTO Funcionario (f_id_pessoa, funcao, salario, carga_horario,"

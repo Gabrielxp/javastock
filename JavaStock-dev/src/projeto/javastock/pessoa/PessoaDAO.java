@@ -1,7 +1,6 @@
 package javastock.pessoa;
 
 import javastock.misc.Endereco;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.*;
 
@@ -15,17 +14,7 @@ public abstract class PessoaDAO {
                 "cidade, uf, cep, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        stmt.setString(1, pessoa.getNome());
-        stmt.setString(2, pessoa.getEmail());
-        stmt.setString(3, pessoa.getRg());
-        stmt.setString(4, pessoa.getCpf());
-        stmt.setString(5, pessoa.getEndereco().getRua());
-        stmt.setInt(6, pessoa.getEndereco().getNumero());
-        stmt.setString(7, pessoa.getEndereco().getBairro());
-        stmt.setString(8, pessoa.getEndereco().getCidade());
-        stmt.setString(9, pessoa.getEndereco().getUf());
-        stmt.setString(10, pessoa.getEndereco().getCep());
-        stmt.setInt(11, 1);
+        this.setDataToStatement(pessoa, stmt);
 
         stmt.execute();
         int id;
@@ -46,6 +35,26 @@ public abstract class PessoaDAO {
                 "numero = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, status = ? WHERE id_pessoa = ?";
 
         PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        this.setDataToStatement(pessoa, stmt);
+
+        stmt.execute();
+        stmt.close();
+
+        return pessoa.getIdPessoa();
+    }
+/*
+    protected Pessoa getById(Connection connection, int id) throws SQLException {
+        String sql = "SELECT * FROM pessoa WHERE id_pessoa = ? LIMIT 1";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet registros = stmt.executeQuery();
+        registros.next();
+
+        return this.getDataFromResult(registros);
+    }
+*/
+    private void setDataToStatement(Pessoa pessoa, PreparedStatement stmt) throws SQLException {
         stmt.setString(1, pessoa.getNome());
         stmt.setString(2, pessoa.getEmail());
         stmt.setString(3, pessoa.getRg());
@@ -57,34 +66,25 @@ public abstract class PessoaDAO {
         stmt.setString(9, pessoa.getEndereco().getUf());
         stmt.setString(10, pessoa.getEndereco().getCep());
         stmt.setInt(11, pessoa.getStatus());
-        stmt.setInt(12, pessoa.getIdPessoa());
 
-        stmt.execute();
-        stmt.close();
-
-        return pessoa.getIdPessoa();
+        if (pessoa.getIdPessoa() > 0)
+            stmt.setInt(12, pessoa.getIdPessoa());
     }
 
-    protected Pessoa getById(Connection connection, int id) throws SQLException {
-        String sql = "SELECT * FROM pessoa WHERE id_pessoa = ? LIMIT 1";
+    protected Pessoa getDataFromResult(ResultSet result) throws SQLException {
+        int id = result.getInt("id_pessoa");
+        String nome = result.getString("nome");
+        String cpf = result.getString("cpf");
+        String rg = result.getString("rg");
+        String email = result.getString("email");
+        int status = result.getInt("status");
 
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, id);
-        ResultSet registros = stmt.executeQuery();
-        registros.next();
-
-        String nome = registros.getString("nome");
-        String cpf = registros.getString("cpf");
-        String rg = registros.getString("rg");
-        String email = registros.getString("email");
-        int status = registros.getInt("status");
-
-        String rua = registros.getString("rua");
-        int numero = registros.getInt("numero");
-        String bairro = registros.getString("bairro");
-        String cidade = registros.getString("cidade");
-        String uf = registros.getString("uf");
-        String cep = registros.getString("cep");
+        String rua = result.getString("rua");
+        int numero = result.getInt("numero");
+        String bairro = result.getString("bairro");
+        String cidade = result.getString("cidade");
+        String uf = result.getString("uf");
+        String cep = result.getString("cep");
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
 
         return new Pessoa(id, nome, cpf, rg, email, endereco, status) {};

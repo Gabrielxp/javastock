@@ -4,14 +4,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="428.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="651.0" prefWidth="1213.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javastock.login.InicialControllerView">
    <children>
-      <TextArea fx:id="estoqueBaixo" editable="false" layoutX="392.0" layoutY="114.0" prefHeight="217.0" prefWidth="226.0" />
-      <ImageView fitHeight="121.0" fitWidth="288.0" layoutX="75.0" layoutY="154.0">
+      <TextArea fx:id="estoqueBaixo" editable="false" layoutX="483.0" layoutY="136.0" prefHeight="414.0" prefWidth="612.0" style="-fx-background-color: white;" />
+      <ImageView fitHeight="179.0" fitWidth="388.0" layoutX="75.0" layoutY="154.0">
          <image>
-            <Image url="@../../../../../../Pictures/jAVAsTOCKLOGO.png" />
+            <Image url="@../img/logo.png" />
          </image>
       </ImageView>
+      <Text layoutX="382.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1.0.0 " />
    </children>
 </AnchorPane>

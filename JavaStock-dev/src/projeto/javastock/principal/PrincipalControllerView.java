@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javastock.botaoMensagens.BotaoView;
+import javastock.login.InicialControllerView;
 import javastock.login.LoginView;
 import javastock.pessoa.funcionario.Funcionario;
 import javastock.produto.Produto;
@@ -117,6 +118,8 @@ public class PrincipalControllerView implements Initializable {
         cadastroFunc.disableProperty().setValue(true);
         edicaoFunc.setVisible(true);
         edicaoFunc.disableProperty().setValue(false);
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
     }
 
     @Override
@@ -125,18 +128,7 @@ public class PrincipalControllerView implements Initializable {
         if (funcionarioLogado.getFuncao().equals("gerente")) {
             administrativo.disableProperty().setValue(false);
 
-            List<Produto> produtos = new ArrayList<>();
-            produtos = ProdutoController.getInstancia().abaixoEstoque();
-            if (!produtos.isEmpty()) {
-                String produto = "";
-                for (Produto p : produtos) {
-                    produto = produto.concat("-----------------\n" +
-                            "ID PRODUTO:" + p.getIdProduto() + " NOME:" + p.getNome()
-                            + "\n QUANTIDADE EM ESTOQUE: " + p.getQuantidadeEstoque()
-                            + " QUANTIDADE MÍNIMA:" + p.getQuantidadeMinima() + "\n");
-                }
-               
-            }
+
         } else {
             administrativo.disableProperty().setValue(true);
         }
@@ -181,6 +173,16 @@ public class PrincipalControllerView implements Initializable {
 
     public void telaInicial() {
         inicial.setVisible(true);
+        cadastroP.setVisible(false);
+        cadastroP.disableProperty().setValue(true);
+        listagemP.setVisible(false);
+        listagemP.disableProperty().setValue(true);
+        cadastroFunc.setVisible(false);
+        cadastroFunc.disableProperty().setValue(true);
+        edicaoFunc.setVisible(false);
+        edicaoFunc.disableProperty().setValue(true);
+        cadastroCli.setVisible(false);
+        cadastroCli.disableProperty().setValue(true);
 
     }
 }

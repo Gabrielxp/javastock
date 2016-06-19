@@ -20,11 +20,11 @@ class LocalConfig implements Config {
     }
 
     public String getUsuarioBD() {
-        return "postgres";
+        return "root";
     }
 
     public String getSenhaBD() {
-        return "jiofre";
+        return "";
     }
 
 }

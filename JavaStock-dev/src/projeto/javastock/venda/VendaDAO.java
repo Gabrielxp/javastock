@@ -93,4 +93,8 @@ public class VendaDAO implements DAO<Venda> {
         throw new NotImplementedException();
     }
 
+    public Venda getById(int id) {
+        throw new NotImplementedException();
+    }
+
 }

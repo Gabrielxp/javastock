@@ -1,54 +1,16 @@
 package javastock.pessoa;
 
-import javastock.misc.DAO;
-import javastock.misc.DatabaseFactory;
+import javastock.misc.Endereco;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.*;
-import java.util.List;
 
 /**
  * Classe Responsavel por fazer operacoes da entidade Funcionario no banco de dados.
  */
-public class PessoaDAO implements DAO<Pessoa> {
+public abstract class PessoaDAO {
 
-    private static final PessoaDAO instancia = new PessoaDAO();
-
-    private PessoaDAO() {
-    }
-
-    /**
-     * Singleton
-     *
-     * @return Instancia de PessoaDAO.
-     */
-    public static PessoaDAO getInstancia() {
-        return instancia;
-    }
-
-    private Connection getConnection() throws SQLException {
-        return new DatabaseFactory().getConnection();
-    }
-
-    public int salvar(Pessoa pessoa) {
-        try (Connection connection = this.getConnection()) {
-            if (pessoa.getIdPessoa() == -1)
-                return this.criar(connection, pessoa);
-            else
-                return this.atualizar(connection, pessoa);
-        } catch (SQLException e) {
-            System.out.print(e);
-        }
-
-        return -1;
-    }
-
-    public List<Pessoa> listar() {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
-    }
-
-    private int criar(Connection connection, Pessoa pessoa) throws SQLException {
+    protected int criar(Connection connection, Pessoa pessoa) throws SQLException {
         String sql = "INSERT INTO Pessoa (nome, email, rg, cpf, rua, numero, bairro, " +
                 "cidade, uf, cep, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -79,9 +41,34 @@ public class PessoaDAO implements DAO<Pessoa> {
         return id;
     }
 
-    private int atualizar(Connection connection, Pessoa pessoa) {
+    protected int atualizar(Connection connection, Pessoa pessoa) {
         // @TODO Terceira entrega.
         throw new NotImplementedException();
+    }
+
+    protected Pessoa getById(Connection connection, int id) throws SQLException {
+        String sql = "SELECT * FROM pessoa WHERE id_pessoa = ? LIMIT 1";
+
+        PreparedStatement stmt = connection.prepareStatement(sql);
+        stmt.setInt(1, id);
+        ResultSet registros = stmt.executeQuery();
+        registros.next();
+
+        String nome = registros.getString("nome");
+        String cpf = registros.getString("cpf");
+        String rg = registros.getString("rg");
+        String email = registros.getString("email");
+        int status = registros.getInt("status");
+
+        String rua = registros.getString("rua");
+        int numero = registros.getInt("numero");
+        String bairro = registros.getString("bairro");
+        String cidade = registros.getString("cidade");
+        String uf = registros.getString("uf");
+        String cep = registros.getString("cep");
+        Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);
+
+        return new Pessoa(id, nome, cpf, rg, email, endereco, status) {};
     }
 
 }

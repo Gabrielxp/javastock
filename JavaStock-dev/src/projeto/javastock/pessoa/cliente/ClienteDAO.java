@@ -3,6 +3,7 @@ package javastock.pessoa.cliente;
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
 import javastock.pessoa.PessoaDAO;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ import java.util.List;
  * DAO de {@link Cliente}.
  * Created by gabri on 17/06/2016.
  */
-public class ClienteDAO implements DAO<Cliente> {
+public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
     public static final ClienteDAO instancia = new ClienteDAO();
 
     /**
@@ -78,7 +79,7 @@ public class ClienteDAO implements DAO<Cliente> {
      * @throws SQLException
      */
     public int criar(Connection connection, Cliente cliente) throws SQLException {
-        int idPessoa = PessoaDAO.getInstancia().salvar(cliente);
+        int idPessoa = super.criar(connection, cliente);
 
         String sql = "INSERT INTO Cliente (c_id_pessoa) VALUES (?)";
 
@@ -100,9 +101,15 @@ public class ClienteDAO implements DAO<Cliente> {
      * @return
      */
     public int atualizar(Connection connection, Cliente cliente) {
+        throw new NotImplementedException();
+        /*
         int idPessoa = PessoaDAO.getInstancia().salvar(cliente);
 
 
-        return idPessoa;
+        return idPessoa;*/
+    }
+
+    public Cliente getById(int id) {
+        throw new NotImplementedException();
     }
 }

@@ -5,12 +5,12 @@ import javastock.misc.DatabaseFactory;
 import javastock.misc.Endereco;
 import javastock.pessoa.Pessoa;
 import javastock.pessoa.PessoaDAO;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,23 +52,34 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
     }
 
     public List<Funcionario> listar() {
-        // @TODO Terceira entrega.
-        throw new NotImplementedException();
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String sql = "SELECT * FROM Funcionario f, Pessoa p WHERE f.f_id_pessoa = p.id_pessoa";
+
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet registros = stmt.executeQuery();
+
+            while (registros.next())
+                funcionarios.add(this.getDataFromResult(registros));
+
+            stmt.close();
+
+        } catch (SQLException e) {
+            System.out.print(e);
+        }
+
+        return funcionarios;
     }
 
     private int criar(Connection connection, Funcionario funcionario) throws SQLException {
         int idPessoa = super.criar(connection, funcionario);
 
-        String sql = "INSERT INTO Funcionario (f_id_pessoa, funcao, salario, carga_horario,"
-                + "regime_trabalho, senha) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Funcionario (funcao, salario, carga_horario,"
+                + "regime_trabalho, senha, f_id_pessoa) VALUES (?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, idPessoa);
-        stmt.setInt(2, funcionario.getFuncao().toUpperCase().equals("GERENTE") ? 2 : 1);
-        stmt.setFloat(3, funcionario.getSalario());
-        stmt.setFloat(4, funcionario.getCargaHoraria());
-        stmt.setString(5, funcionario.getRegimeDeTrabalho());
-        stmt.setString(6, funcionario.getSenha());
+        this.setStatement(stmt, funcionario);
+        stmt.setInt(6, idPessoa);
 
         stmt.execute();
         stmt.close();
@@ -83,13 +94,7 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
                 + "regime_trabalho = ?, senha = ? WHERE f_id_pessoa = ?";
 
         PreparedStatement stmt = connection.prepareStatement(sql);
-
-        stmt.setInt(1, funcionario.getFuncao().toUpperCase().equals("GERENTE") ? 2 : 1);
-        stmt.setFloat(2, funcionario.getSalario());
-        stmt.setFloat(3, funcionario.getCargaHoraria());
-        stmt.setString(4, funcionario.getRegimeDeTrabalho());
-        stmt.setString(5, funcionario.getSenha());
-        stmt.setInt(6, funcionario.getIdPessoa());
+        this.setStatement(stmt, funcionario);
 
         stmt.execute();
         stmt.close();
@@ -98,7 +103,8 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
     }
 
     public Funcionario getById(int id) {
-        String sql = "SELECT * FROM Funcionario WHERE f_id_pessoa = ? LIMIT 1";
+        String sql = "SELECT * FROM Funcionario f, Pessoa p WHERE f.f_id_pessoa = p.id_pessoa " +
+                "AND f_id_pessoa = ? LIMIT 1";
         Funcionario funcionario = null;
 
         try (Connection connection = this.getConnection()) {
@@ -106,31 +112,42 @@ public class FuncionarioDAO extends PessoaDAO implements DAO<Funcionario> {
             stmt.setInt(1, id);
             ResultSet registros = stmt.executeQuery();
             registros.next();
-
-            String funcao = registros.getInt("funcao") == 2 ? "GERENTE" : "VENDEDOR";
-            int cargaHoraria = registros.getInt("carga_horario");
-            float salario = registros.getFloat("salario");
-            String regimeDeTrabalho = registros.getString("regime_trabalho");
-            String senha = registros.getString("senha");
-
-            stmt.close();
-
-            Pessoa pessoa = super.getById(connection, id);
-            String nome = pessoa.getNome();
-            String cpf = pessoa.getCpf();
-            String rg = pessoa.getRg();
-            String email = pessoa.getEmail();
-            Endereco endereco = pessoa.getEndereco();
-            int status = pessoa.getStatus();
-
-            funcionario = new Funcionario(id, nome, cpf, rg, email, endereco, status, salario,
-                    cargaHoraria, funcao, regimeDeTrabalho, senha);
-
+            funcionario = this.getDataFromResult(registros);
         } catch (SQLException e) {
             System.out.print(e);
         }
 
         return funcionario;
+    }
+
+    private void setStatement(PreparedStatement stmt, Funcionario funcionario) throws SQLException {
+        stmt.setInt(1, funcionario.getFuncao().toUpperCase().equals("GERENTE") ? 2 : 1);
+        stmt.setFloat(2, funcionario.getSalario());
+        stmt.setFloat(3, funcionario.getCargaHoraria());
+        stmt.setString(4, funcionario.getRegimeDeTrabalho());
+        stmt.setString(5, funcionario.getSenha());
+        stmt.setInt(6, funcionario.getIdPessoa());
+    }
+
+    protected Funcionario getDataFromResult(ResultSet result) throws SQLException {
+        Pessoa pessoa = super.getDataFromResult(result);
+
+        String funcao = result.getInt("funcao") == 2 ? "GERENTE" : "VENDEDOR";
+        int cargaHoraria = result.getInt("carga_horario");
+        float salario = result.getFloat("salario");
+        String regimeDeTrabalho = result.getString("regime_trabalho");
+        String senha = result.getString("senha");
+
+        int id = pessoa.getIdPessoa();
+        String nome = pessoa.getNome();
+        String cpf = pessoa.getCpf();
+        String rg = pessoa.getRg();
+        String email = pessoa.getEmail();
+        Endereco endereco = pessoa.getEndereco();
+        int status = pessoa.getStatus();
+
+        return new Funcionario(id, nome, cpf, rg, email, endereco, status, salario, cargaHoraria,
+                funcao, regimeDeTrabalho, senha);
     }
 
 }

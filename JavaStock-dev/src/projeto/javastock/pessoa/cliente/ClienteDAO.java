@@ -120,13 +120,9 @@ public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
      * @param cliente
      * @return
      */
-    public int atualizar(Connection connection, Cliente cliente) {
-        throw new NotImplementedException();
-        /*
-        int idPessoa = PessoaDAO.getInstancia().salvar(cliente);
-
-
-        return idPessoa;*/
+    private int atualizar(Connection connection, Cliente cliente) throws SQLException  {
+        super.atualizar(connection, cliente);
+        return cliente.getIdPessoa();
     }
 
     public Cliente getById(int id) {

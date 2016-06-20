@@ -28,12 +28,4 @@ public class ProdutoDAOTest extends TestCase {
         assertNotNull(lista);
     }
 
-/*   public void testeAtualizar() {
-        Produto p = ProdutoDAO.getInstancia().getById(1);
-        p.setMargemLucro(3);
-        ProdutoDAO.getInstancia().salvar(p);
-
-        p = ProdutoDAO.getInstancia().getById(1);
-        assertEquals(p.getMargemLucro(), 3);
-    }*/
 }

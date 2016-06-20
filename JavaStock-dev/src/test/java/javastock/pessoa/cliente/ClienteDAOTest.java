@@ -2,7 +2,6 @@ package javastock.pessoa.cliente;
 
 import javastock.misc.Endereco;
 import junit.framework.TestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 public class ClienteDAOTest extends TestCase{
 
     @Test
-    @Ignore
     public void testeSalvar() {
         Endereco e1 = new Endereco("Rua Centro", 666, "Arraial", "Dois vizinhos", "PR", "85660-000");
         Cliente c1 = new Cliente("Rui barbosa", "213.434.324-34", "23.434.343", "rui@gmail.com", e1, 1);
@@ -23,18 +21,17 @@ public class ClienteDAOTest extends TestCase{
     }
 
     @Test
-    @Ignore
     public void testeListar() {
         List<Cliente> lista = ClienteDAO.getInstancia().listar();
         assertNotNull(lista);
     }
-
-/*    public void testeAtualizar() {
-        Cliente p = ClienteDAO.getInstancia().getById(1);
-        p.setNome("Djalma");
+    @Test
+    public void testeAtualizar() {
+        Cliente p = ClienteDAO.getInstancia().getById(2);
+        p.setNome("Luan");
         ClienteDAO.getInstancia().salvar(p);
 
-        p = ClienteDAO.getInstancia().getById(1);
-        assertEquals(p.getNome(), "Djalma");
-    }*/
+        p = ClienteDAO.getInstancia().getById(2);
+        assertEquals(p.getNome(), "Luan");
+    }
 }

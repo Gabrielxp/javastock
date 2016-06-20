@@ -2,12 +2,17 @@ package javastock.pessoa.cliente;
 
 import javastock.misc.DAO;
 import javastock.misc.DatabaseFactory;
+import javastock.misc.Endereco;
+import javastock.pessoa.Pessoa;
 import javastock.pessoa.PessoaDAO;
+import javastock.pessoa.funcionario.Funcionario;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +48,6 @@ public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
     public int salvar(Cliente cliente) {
         try (Connection connection = this.getConnection()) {
             if (cliente.getIdPessoa() == -1) {
-                System.out.println("entrou em criar");
                 return this.criar(connection, cliente);
             } else {
                 return this.atualizar(connection, cliente);
@@ -57,7 +61,23 @@ public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
 
     @Override
     public List<Cliente> listar() {
-        return null;
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT * FROM Cliente c, Pessoa p WHERE c.c_id_pessoa = p.id_pessoa";
+
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet registros = stmt.executeQuery();
+
+            while (registros.next())
+                clientes.add(this.getClienteFromResult(registros));
+
+            stmt.close();
+
+        } catch (SQLException e) {
+            System.out.print(e);
+        }
+
+        return clientes;
     }
 
     /**
@@ -111,5 +131,11 @@ public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
 
     public Cliente getById(int id) {
         throw new NotImplementedException();
+    }
+
+    private Cliente getClienteFromResult(ResultSet result) throws SQLException {
+        Pessoa pessoa = super.getDataFromResult(result);
+        return new Cliente(pessoa.getIdPessoa(), pessoa.getNome(), pessoa.getCpf(),
+                pessoa.getRg(), pessoa.getEmail(), pessoa.getEndereco(), pessoa.getStatus());
     }
 }

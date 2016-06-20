@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Classe responsavel por gerar relatorios de vendas por mes.
+ */
 public class VendasPorMes {
 
     /**

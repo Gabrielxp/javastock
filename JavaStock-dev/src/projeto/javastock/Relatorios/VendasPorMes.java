@@ -1,7 +1,14 @@
 package javastock.Relatorios;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Header;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javastock.misc.DatabaseFactory;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +44,35 @@ public class VendasPorMes {
         }
 
         return quantidade;
+    }
+
+    /**
+     * Gera documento em PDF com relatorio de vendas por mes do ano informado.
+     * @param ano Ano do relatorio.
+     */
+    public static void gerarRelatorio(int ano) {
+
+        String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
+                "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
+
+        Document doc = new Document();
+
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("./vendas por mes.pdf"));
+            doc.open();
+
+            doc.add(new Paragraph("Vendas por mês - " + ano));
+
+
+            for (int i = 0; i < 12; i++)
+                doc.add(new Paragraph(meses[i] + ": " + calcular(i + 1, ano)));
+
+        } catch (DocumentException de) {
+            System.err.println(de.getMessage());
+        } catch (IOException ioe) {
+            System.err.println(ioe.getMessage());
+        }
+        doc.close();
     }
 
     /**

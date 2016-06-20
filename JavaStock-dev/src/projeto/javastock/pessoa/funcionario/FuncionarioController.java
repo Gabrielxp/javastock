@@ -3,6 +3,8 @@ package javastock.pessoa.funcionario;
 import javastock.misc.DAO;
 import javastock.misc.Endereco;
 
+import java.util.List;
+
 /**
  * Controller de funcionarios.
  */
@@ -48,6 +50,31 @@ public class FuncionarioController {
         Funcionario funcionario = new Funcionario(nome, cpf, rg, email, endereco, status,
                 salario, cargaHoraria, funcao, regimeDeTrabalho, senha);
 
+        this.funcionarioDAO.salvar(funcionario);
+    }
+
+    /**
+     * Busca todos os funcionarios do banco.
+     * @return Lista de funcionarios.
+     */
+    public List<Funcionario> listar() {
+        return this.funcionarioDAO.listar();
+    }
+
+    /**
+     * Busca no banco o funcionario com o id informado.
+     * @param id Id do funcionario.
+     * @return Funcionario entrado.
+     */
+    public Funcionario buscar(int id) {
+        return this.funcionarioDAO.getById(id);
+    }
+
+    /**
+     * Atualiza funcionario no banco.
+     * @param funcionario Funcionario com as alteracoes.
+     */
+    public void salvar(Funcionario funcionario) {
         this.funcionarioDAO.salvar(funcionario);
     }
 

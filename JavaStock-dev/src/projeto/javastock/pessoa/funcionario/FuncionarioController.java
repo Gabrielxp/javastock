@@ -3,6 +3,8 @@ package javastock.pessoa.funcionario;
 import javastock.misc.DAO;
 import javastock.misc.Endereco;
 
+import java.util.List;
+
 /**
  * Controller de funcionarios.
  */
@@ -54,6 +56,42 @@ public class FuncionarioController {
         this.funcionarioDAO.salvar(funcionario);
     }
 
+    /**
+     * Busca todos os funcionarios do banco.
+     * @return Lista de funcionarios.
+     */
+    public List<Funcionario> listar() {
+        return this.funcionarioDAO.listar();
+    }
+
+    /**
+     * Busca no banco o funcionario com o id informado.
+     * @param id Id do funcionario.
+     * @return Funcionario entrado.
+     */
+    public Funcionario buscar(int id) {
+        return this.funcionarioDAO.getById(id);
+    }
+
+    /**
+     * Atualiza funcionario no banco.
+     *
+     * @param id               Id do funcionario.
+     * @param nome             Nome do funcionario.
+     * @param cpf              CPF do funcionario.
+     * @param rg               Numero da carteira de identidade da pessoa.
+     * @param email            Email do funcionario.
+     * @param rua              Rua do endereco.
+     * @param numero           Numero do endereco.
+     * @param bairro           Bairro do endereco.
+     * @param cidade           Cidade do endereco.
+     * @param uf               Sigla do estado do endereco.
+     * @param cep              CEP do endereco.
+     * @param salario          Salario do funcionario.
+     * @param cargaHoraria     Carga horaria do funcionario.
+     * @param funcao           Funcao do funcionario.
+     * @param regimeDeTrabalho Regime de trabalho do funcionario.
+     */
     public void salvar(int id, String nome, String cpf, String rg, String email, String rua,
                        int numero, String bairro, String cidade, String uf, String cep, int status, float salario,
                        float cargaHoraria, String funcao, String regimeDeTrabalho, String senha) {
@@ -63,7 +101,6 @@ public class FuncionarioController {
                 salario, cargaHoraria, funcao, regimeDeTrabalho, senha);
 
         this.funcionarioDAO.salvar(funcionario);
-
     }
 
 }

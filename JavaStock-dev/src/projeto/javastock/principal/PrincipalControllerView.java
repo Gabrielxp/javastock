@@ -106,6 +106,8 @@ public class PrincipalControllerView implements Initializable {
         edicaoFunc.disableProperty().setValue(true);
         cadastroCli.setVisible(false);
         cadastroCli.disableProperty().setValue(true);
+        inicial.setVisible(false);
+
     }
 
     public void edicaoFuncionarios() {

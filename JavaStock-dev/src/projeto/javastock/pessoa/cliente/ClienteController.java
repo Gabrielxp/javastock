@@ -56,7 +56,7 @@ public class ClienteController {
      * @param uf               Sigla do estado do endereco.
      * @param cep              CEP do endereco.
      */
-    public int criar(int id, String nome, String cpf, String rg, String email, String rua,
+    public int salvar(int id, String nome, String cpf, String rg, String email, String rua,
                      int numero, String bairro, String cidade, String uf, String cep, int status) {
 
         Endereco endereco = new Endereco(rua, numero, bairro, cidade, uf, cep);

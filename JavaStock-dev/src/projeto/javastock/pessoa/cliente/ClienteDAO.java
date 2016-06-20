@@ -125,8 +125,23 @@ public class ClienteDAO extends PessoaDAO implements DAO<Cliente> {
         return cliente.getIdPessoa();
     }
 
+    @Override
     public Cliente getById(int id) {
-        throw new NotImplementedException();
+        String sql = "SELECT * FROM Cliente c, Pessoa p WHERE c.c_id_pessoa = p.id_pessoa " +
+                "AND c_id_pessoa = ? LIMIT 1";
+        Cliente cliente = null;
+
+        try (Connection connection = this.getConnection()) {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet registros = stmt.executeQuery();
+            registros.next();
+            cliente = this.getClienteFromResult(registros);
+        } catch (SQLException e) {
+            System.out.print(e);
+        }
+
+        return cliente;
     }
 
     private Cliente getClienteFromResult(ResultSet result) throws SQLException {
